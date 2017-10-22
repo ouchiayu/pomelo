@@ -1,0 +1,109 @@
+body{
+	min-width: 0;
+}
+
+main{
+	section{
+		h1{
+			margin: auto;
+		}
+		.order_list{
+			.title{
+				display: none;
+			}
+			.persons{
+				border: solid 1px rgba(150, 182, 166, 0.2);
+				.publick_inf{
+					float: none;
+					width: calc(100% - 1em);
+					div{
+						float: none;
+						&:before{
+							display: inline-block;
+							width: 5em;
+							color: #96b6a6;
+							font-weight: bold;
+						}
+						&:nth-of-type(1){
+							width: 100%;
+							&:before{
+								content: "訂單編號";
+							}
+							a{
+								margin-left: 5em;
+							}
+						}
+						&:nth-of-type(2){
+							width: 100%;
+							&:before{
+								content: "訂購人";
+							}
+						}
+						&:nth-of-type(3){
+							width: 100%;
+							text-align: left;
+							&:before{
+								content: "金額";
+							}
+						}
+						&:nth-of-type(4){
+							width: 100%;
+							&:before{
+								content: "付款方式";
+							}
+						}
+					}
+				}
+				.person_inf{
+					float: none;
+					width: 90%;
+					margin: auto;
+					.person{
+						position: relative;
+						border-top: dashed 1px rgba(150, 182, 166, 0.5);
+						div{
+							display: block;
+							&:before{
+								display: inline-block;
+								width: 4em;
+								color: #96b6a6;
+								font-weight: bold;
+							}
+							&:nth-of-type(1){
+								width: calc(100% - 1em);
+								text-align: left;
+								&:after{
+									content: " 箱";
+								}
+							}
+							&:nth-of-type(2){
+								width: calc(100% - 1em);
+								&:before{
+									content: "收件人";
+								}
+							}
+							&:nth-of-type(3){
+								width: calc(100% - 1em);
+								&:before{
+									content: "備註";
+								}
+							}
+							&:nth-of-type(4){
+								position: absolute;
+								width: auto;
+								right: 0;
+								top: 0;
+							}
+							&:nth-of-type(5){
+								display: none;
+							}
+						}
+					}
+				}
+				&+.persons{
+					margin-top: 1em;
+				}
+			}
+		}
+	}
+}

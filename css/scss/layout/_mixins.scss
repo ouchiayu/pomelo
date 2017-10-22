@@ -1,0 +1,213 @@
+// ----------------------- RWD ----------------------- 
+	$tablet-width: 768px;
+	$desktop-width: 1440px;
+
+	@mixin pcsize {
+		@media only screen and (min-width: #{$tablet-width + 1px}) {
+	    	@content;
+		}
+	}
+
+	@mixin biggerthanmix {
+		@media (min-width: #{$desktop-width + 1px}) {
+			@content;
+		}
+	}
+
+// ----------------------- 瀏覽器 ----------------------- 
+	
+	@mixin safari{
+	    @media screen and (-webkit-min-device-pixel-ratio:0){
+	        @content;
+	    }
+	}
+
+	// for ie11+
+	@mixin ie{
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        	@content;
+    	}
+	}
+
+	@mixin firefox{
+		@-moz-document url-prefix() {
+			@content;
+    	} 
+	}
+
+
+
+// ----------------------- 文字相關 ----------------------- 
+
+	// rem 應用
+	@function calculateRem($size) {
+		$remSize: $size / 16px;
+		@return $remSize * 1rem;
+	}
+
+	@mixin font-size($size) {
+		font-size: $size;
+		font-size: calculateRem($size);
+	}
+
+
+
+// ----------------------- others ----------------------- 
+
+	// 透明度
+	@mixin opacity($opacity) {
+		opacity: $opacity;
+		$opacity-ie: $opacity * 100;
+		filter: alpha(opacity=$opacity-ie); //IE8
+	}
+
+	// 圓角
+	@mixin border-radius($radius) {
+		-webkit-border-radius: $radius;
+		-moz-border-radius: $radius;
+		border-radius: $radius;
+	}
+
+	// 外陰影
+	@mixin box-shadow($shadow: 5px,$persent: 0.1){
+		-webkit-box-shadow:0px 0px $shadow rgba(0,0,0,$persent);
+		-moz-box-shadow:0px 0px $shadow rgba(0,0,0,$persent);
+		box-shadow:0px 0px $shadow rgba(0,0,0,$persent);
+	}
+
+	// placeholder 顏色
+	@mixin placeholder($color){
+		&::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+			-webkit-text-fill-color: $color;
+			color: $color;
+		}
+		&:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+			color: $color;
+			-webkit-text-fill-color: $color;
+			opacity:  1;
+		}
+		&::-moz-placeholder { /* Mozilla Firefox 19+ */
+			color: $color;
+			-webkit-text-fill-color: $color;
+			opacity:  1;
+		}
+		&:-ms-input-placeholder { /* Internet Explorer 10-11 */
+			color: $color;
+			-webkit-text-fill-color: $color;
+		}
+		&:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+			color: $color;
+			-webkit-text-fill-color: $color;
+		}
+	}
+
+	// 文字過長時，以「...」取代過多部分
+	@mixin ellipsis() {
+		text-overflow:ellipsis;
+		-o-text-overflow:ellipsis;
+		overflow: hidden;
+		white-space:nowrap;
+		text-rendering: auto;
+	}
+
+	// 取消float
+	@mixin floatclear(){
+		&:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+	}
+
+	// 清除預設樣式(通常使用在 form 表單元素)
+	@mixin appearance-none(){
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		&::-ms-expand {
+			display: none;
+		}
+	}
+
+	// 垂直置中(使用在父元素的 虛擬元素:before 中)
+	@mixin vertical-align-middle(){
+		content: "";
+		width: 0;
+		height: 100%;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	// 背景圖片
+	@mixin background($url,$type){
+		background: url($url) no-repeat center center fixed; 
+		-webkit-background-size: $type;
+		-moz-background-size: $type;
+		-o-background-size: $type;
+		background-size: $type;
+	}
+
+// ----------------------- 動畫效果 ----------------------- 
+	// 
+	// 動畫效果
+	@mixin transition($property, $duration, $timing_function, $delay: 0s){
+	    transition: $property $duration $timing_function $delay;
+	    -moz-transition: $property $duration $timing_function $delay;
+	    -webkit-transition: $property $duration $timing_function $delay;
+	    -o-transition: $property $duration $timing_function $delay;
+	}
+	
+	// 2D 變形
+	@mixin transform($function){
+		-webkit-transform: $function;
+		-moz-transform: $function;
+		-ms-transform: $function;
+		-o-transform: $function;
+		transform: $function;		
+	}
+		
+	@mixin keyframe0($transform){
+		@include transform($transform);
+		opacity: 0;
+	}
+	@mixin keyframe1(){
+		@include transform(none !important);
+		opacity: 1 !important;
+	}
+
+// ----------------------- 其他自設定 -----------------------
+	
+	// 行高
+	@mixin line-height($normal,$firefox,$ie){
+	    line-height: $normal;
+	    line-height: $ie \9;
+	     @-moz-document url-prefix() { 
+	        line-height: $firefox;
+	     }
+	     @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	        line-height: $ie;
+	    }
+
+	}
+
+	@mixin appearance-none-button(){
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		border: none;
+		background: transparent;
+		padding: 0;
+		margin: 0;
+		outline: none;
+		cursor: pointer;
+	}
+
+	@mixin user-drag($value: none) {
+		user-drag: $value; 
+		user-select: $value;
+		-moz-user-select: $value;
+		-webkit-user-drag: $value;
+		-webkit-user-select: $value;
+		-ms-user-select: $value;
+	}
+

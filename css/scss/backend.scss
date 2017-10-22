@@ -1,0 +1,61 @@
+@import "function";
+
+$pc_width: 1200;
+$mobile_width: 320;
+
+@for $i from 300 through 768{
+    @if $i%5 == 0{
+        @media only screen and (min-width: #{$i}px) {
+            html, body{
+                font-size: ((16px / $mobile_width) * $i);
+            }
+        }
+    }
+
+    @if $i == 768{
+        @media only screen and (min-width: #{$i}px) {
+            html, body{
+                font-size: ((16px / $mobile_width) * $i);
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    html, body{
+        font-size: ((16px / $pc_width) * 1200);
+    }
+}
+
+@for $i from 1200 through 1920{
+    @if $i%5 == 0{
+        @media only screen and (min-width: #{$i}px) {
+            html, body{
+                font-size: ((16px / $pc_width) * $i);
+            }
+        }
+    }
+}
+
+body{
+    font-family: 'YuGothic', 'Yu Gothic', 'Hiragino Kaku Gothic Pro', 'Meiryo', 'Helvetica', 'Arial', 'Noto Sans CJK TC', 'Noto Sans CJK', 'Heiti TC', 'Microsoft YaHei', 'Microsoft JhengHei', sans-serif;
+    color: #96b6a6;
+    letter-spacing: 1px;
+    min-width: 1200px;
+    input, button{
+        padding: 0;
+        outline: none;
+    }
+    select{
+        @include appearance-none;
+        border: none;
+        background: transparent;
+        outline: none;
+        &::-ms-expand {
+            display: none;
+        }
+    }
+}
+
+@import "admin";
+

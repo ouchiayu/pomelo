@@ -1,0 +1,281 @@
+body{
+	text-align: center;
+}
+h1{
+	position: relative;
+	z-index: 2;
+	display: inline-block;
+	border: solid 1px #ffffff;
+	padding: 0.5em 1.5em;
+	font-weight: normal;
+	margin-top: 10vw;
+	background-color: #96b6a6;
+}
+
+main.order{
+	position: relative;
+	z-index: 1;
+	border: solid 1px #ffffff;
+	margin-top: -1em;
+	padding: 5%;
+	width: 70%;
+	section{
+		.big_title{
+			text-align: left;
+		}
+		&.subtitle{
+			text-align: center;
+			vertical-align: middle;
+			.order_num{
+				display: inline-block;
+				padding: 0.5em;
+				margin: 0 0.5em;
+				background-color: #ffffff;
+				color: #96b6a6;
+				vertical-align: middle;
+			}
+		}
+
+		&.send_mail{
+			display: none;
+			form{
+				text-align: right;
+				input[type=email]{
+					width: 40%;
+					background: none;
+					border: none;
+					line-height: calculateRem(32px);
+					outline: none;
+					color: #ffffff;
+					letter-spacing: 1px;
+					padding: 0 0.5em;
+					border-bottom: solid 1px #ffffff;
+					@include font-size(14px);
+					@include placeholder(rgba(255, 255, 255, 0.6));
+				}
+				input[type=submit]{
+					background: none;
+					border: none;
+					line-height: calculateRem(32px);
+					outline: none;
+					color: #ffffff;
+					letter-spacing: 1px;
+					padding: 0 1em;
+					border: solid 1px #ffffff;
+					cursor: pointer;
+					@include font-size(14px);
+				}
+			}
+		}
+
+		&.addressee{
+			.table{
+				.addressee_person{
+					.person{
+						.person_inf{
+							float: none;
+							width: 100%;
+							.field{
+								&:nth-of-type(4){
+									.road{
+										width: calc(100% - #{calculateRem(32px)});
+										margin-left: 0;
+										overflow: hidden;
+										text-overflow: ellipsis;
+									}
+								}
+							}
+						}
+
+						.order_status{
+							margin: 2em 0 1em;
+							.all_status{
+								position: relative;
+								z-index: 2;
+								margin-top: calculateRem(-13px);
+								.status{
+									display: inline-block;
+									vertical-align: middle;
+									width: 7em;
+									@include font-size(14px);
+									line-height: 1.5;
+									border: solid 1px #ffffff;
+									background: #96b6a6;
+									opacity: 0.5;
+									&.pass{
+										opacity: 1;
+									}
+									&.now{
+										color: #96b6a6;
+										background: #ffffff;
+										opacity: 1;
+									}
+									&.check{
+										cursor: pointer;
+									}
+								}
+								.line{
+									display: inline-block;
+									vertical-align: middle;
+									width: calc((100% - #{calculateRem(392px)} - 8px) / 3);
+									height: 1px;
+									background-color: #ffffff;
+									opacity: 0.5;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.payment{
+			.table{
+				.btn{
+					float: none;
+					&+.btn{
+						margin-left: 0;
+					}
+					&.atm{
+						width: auto;
+						text-align: left;
+						padding: 1em;
+						.atm_inf{
+							margin: 0.5em 0;
+							@include font-size(12px);
+							@include floatclear();
+							>span{
+								display: block;
+								float: left;
+								width: 5em;
+							}
+							p{
+								float: left;
+								width: calc(100% - 5em);
+							}
+						}
+						form{
+							.field{
+								width: calc((100% - 7rem) / 2);
+								margin-right: 1rem;
+								label{
+									width: calculateRem(32px);
+								}
+								input{
+									display: block;
+									width: calc(100% - #{calculateRem(32px)});
+								}
+								.select-style{
+									float: left;
+									width: calc(100% - #{calculateRem(32px)});
+									position: relative;
+									overflow: hidden;
+									select{
+										width: calc(100% + 15px);
+										position: relative;
+										z-index: 2;
+										background: none;
+										color: #ffffff;
+										line-height: calculateRem(32px);
+										@include font-size(14px);
+									}
+									i{
+										position: absolute;
+										display: block;
+										right: 0;
+										top: 0;
+										text-align: center;
+										z-index: 1;
+										width: calculateRem(32px);
+										height: calculateRem(32px);
+										line-height: calculateRem(32px);
+										@include font-size(14px);
+									}
+								}
+							}
+							button, .button{
+								display: inline-block;
+								width: 5rem;
+								line-height: calculateRem(32px);
+								cursor: pointer;
+								@include font-size(14px);
+							}
+							.button{
+								cursor: default;
+								text-align: center;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.form_bottom{
+			.total{
+				float: none;
+				width: 100%;
+
+			}
+			&:after{
+				display: block;
+				content: "";
+				width: calc(100% + 1em);
+				height: 1px;
+				background: #ffffff;
+				padding: 0;
+				margin-top: 2rem;
+			}
+		}
+	}
+	&.error{
+		form{
+			margin-top: calculateRem(32px);
+			input{
+				width: 40%;
+				line-height: 2;
+				padding: 0 0.5em;
+				background: transparent;
+				border: none;
+				border-bottom: solid 1px #ffffff;
+				color: #ffffff;
+				@include font-size(14px);
+				@include placeholder(rgba(255, 255, 255, 0.5));
+			}
+			button{
+				@include font-size(14px);
+				border: none;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+.home_icon{
+    position: fixed;
+    z-index: 3;
+    right: -4rem;
+    top: 10%;
+    @include transition-duration(1s);
+    a{
+    	display: block;
+    	width: 6rem;
+    	height: 2rem;
+    	background-color: #ffffff;
+    	text-align: left;
+    	color: #96b6a6;
+	    >i{
+	    	display: inline-block;
+		    width: calculateRem(32px);
+		    height: calculateRem(32px);
+		    text-align: center;
+		    line-height: calculateRem(32px);
+	    }
+    }
+    &:hover{
+    	right: 0;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+	@import "order_pad";
+}

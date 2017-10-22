@@ -1,0 +1,31 @@
+body {
+  background: none;
+  color: #cccccc; }
+
+.editor input[type=text] {
+  width: 100%;
+  background: none;
+  outline: none;
+  border: dashed 2px #cccccc;
+  padding: 0.5em; }
+.editor .editor_block div {
+  border: dashed 2px #cccccc;
+  padding: 0.5em;
+  cursor: pointer; }
+  .editor .editor_block div:hover {
+    background: rgba(200, 200, 200, 0.5); }
+  .editor .editor_block div.edit {
+    border: dashed 2px orange; }
+
+.fa {
+  width: 2.5em;
+  height: 2.5em;
+  font-size: 1em;
+  text-align: center;
+  line-height: 2.5em;
+  border-radius: 50%;
+  background: #cccccc;
+  color: #ffffff;
+  cursor: pointer; }
+
+/*# sourceMappingURL=edit.css.map */

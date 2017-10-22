@@ -1,0 +1,543 @@
+@import "layout/mixins";
+@import "layout/variables";
+
+.max-width{
+	>div{
+		padding: calculateRem(30px) 5%;
+	}
+}
+
+.search-block{
+	position: fixed;
+	left: 0;
+	z-index: 3;
+	width: 100%;
+	.search-form{
+		width: 100%;
+		background: $green;
+		color: white;
+		padding: 1.5em 0;
+		.max-width{
+			>div{
+				padding: 0 5%;
+			}
+		}
+		.title{
+			margin-bottom: 0.5em;
+			@include font-size(12px);
+		}
+		.field-group{
+			border-color: white;
+			&:before, &:after{
+				background: white;
+			}
+			input{
+				width: calc(100% - (1em * 2) - 0.01px);
+				padding: 0.25em 0.5em;
+				color: white;
+				letter-spacing: 1px;
+				@include font-size(12px);
+			}
+			button{
+				width: 1em * 2;
+				height: 1em * 2;
+				color: white;
+				text-align: center;
+				@include font-size(12px);
+				i{
+					font-size: 0.8em;
+				}
+			}
+		}
+	}
+
+	.max-width{
+		.search-btn{
+			top: 0;
+			margin-right: 5%;
+			background: $green;
+			padding: 0.5em;
+			color: white;
+			cursor: pointer;
+			box-shadow: 0 2px 4px 0 rgba(black, 0.1);
+			@include font-size(12px);
+			@include transition(0.3s, all, linear, 0s);
+			&:hover{
+				padding-top: 1em;
+			}
+		}
+	}
+}
+
+header{
+	h1{
+		font-weight: bold;
+		@include font-size(24px);
+	}
+	.owl-carousel{
+		margin: 1.5em 0;
+		@include font-size(10px);
+		.owl-dots{
+			margin: 1.5em -0.25em 0;
+			@include floatclear();
+			.owl-dot{
+				float: left;
+				width: calc(100% / 5 - 0.01px);
+				padding: 0 0.25em;
+				height: 2px;
+				span{
+					display: block;
+					width: 100%;
+					height: 100%;
+					background: rgb(222, 222, 222);
+				}
+				&.active{
+					span{
+						background: $green;
+					}
+				}
+			}
+		}
+	}
+
+}
+
+main{
+	margin: 1em 0;
+	h2{
+		text-align: center;
+		border: solid 1px $green;
+		padding: 0.25em 0;
+		letter-spacing: 0.25em;
+		color: $green;
+		@include font-size(14px);
+	}
+
+	.form-group{
+		padding: 1em 0;
+		margin: 0;
+		h3{
+			color: $gray;
+			@include font-size(14px);
+		}
+		>article{
+			position: relative;
+			margin: 2em 0;
+			background: white;
+			padding: 1.5em 1em;
+			box-shadow: 0 2px 4px 0 rgba(black, 0.1);
+			&:first-of-type{
+				.del_btn{
+					display: none;
+				}
+			}
+		}
+		+.form-group{
+			border-top: solid 1px white;
+		}
+
+		.del_btn{
+			position: absolute;
+			right: 0;
+			top: -2em;
+			padding: 0.5em;
+			border: solid 1px $green;
+			color: $green;
+			cursor: pointer;
+			@include font-size(12px);
+		}
+
+		.twzipcode{
+			margin: 1.5em 0; 
+			.col-block{
+				margin: 0 -0.5em;
+				.col-3{
+					padding: 0 0.5em;
+				}
+			}
+			.zipcode{
+				display: none;
+			}
+		}
+
+		.field-group{
+			.address{
+				padding: 0.25em 1px;
+				@include floatclear();
+				@include font-size(12px);
+				.road{
+					position: relative;
+					float: left;
+					width: calc(100% / 15 - 0.01px);
+					&.road-2{
+						width: calc((100% / 15) * 2 - 0.01px);
+						.field{
+							padding: 0;
+							padding-right: calculateRem(12px * 0.7);
+						}
+					}
+					&.road-4{
+						width: calc((100% / 15) * 4 - 0.01px);
+						.field{
+							padding: 0;
+							padding-right: calculateRem(12px * 0.7 * 3);
+						}
+					}
+
+					.field{
+						position: relative;
+						z-index: 2;
+						padding: 0;
+						text-align: center;
+						line-height: calculateRem(18px);
+						@include font-size(10px);
+					}
+					.road-type{
+						position: absolute;
+						right: 0;
+						z-index: 1;
+						text-align: right;
+						top: 0;
+						transform-origin: 100% 50%;
+						opacity: 0.5;
+						@include transform(scale(0.7));
+					}
+				}
+			}
+		}
+
+		.radio-group{
+			margin: 1.5em 0;
+			.col-block{
+				margin: 0 -0.5em;
+				.col-3{
+					padding: 0 0.5em;
+				}
+			}
+		}
+
+		.shop-info{
+			height: calculateRem(60px);
+			margin: 1.5em -1em -1.5em;
+			background: $green;
+			@include floatclear();
+			.qtymodal{
+				float: left;
+				width: calc(50% - 0.01px);
+				@include floatclear();
+				.qty{
+					position: relative;
+					float: left;
+					width: calc(100% - #{calculateRem(30px)} - 0.01px);
+					text-align: center;
+					padding: calculateRem(15px) 0;
+					input{
+						text-align: center;
+						color: white;
+						width: 35%;
+						height: calculateRem(30px);
+						line-height: calculateRem(30px);
+						border-bottom: solid 1px white;
+						vertical-align: bottom;
+						@include font-size(24px);
+						&::-webkit-inner-spin-button{
+							@include appearance-none();
+						}
+					}
+					.title{
+						color: white;
+						display: inline-block;
+						vertical-align: bottom;
+						margin-left: 0.5em;
+						@include font-size(10px);
+					}
+					label.error{
+						text-align: left;
+						position: absolute;
+						display: block;
+						width: 100%;
+						top: 100%;
+						color: $red;
+						margin-top: 0.5em;
+						@include font-size(10px);
+					}
+				}
+				.qty-controler{
+					float: right;
+					width: calculateRem(30px);
+					border-left: solid 1px white;
+					border-right: solid 1px white;
+					.plus, .less{
+						width: 100%;
+						height: calculateRem(30px);
+						text-align: center;
+						line-height: calculateRem(30px);
+						color: white;
+						cursor: pointer;
+						@include font-size(16px);
+					}
+					.less{
+						border-top: solid 1px white;
+					}
+				}
+			}
+			.total{
+				float: left;
+				width: calc(50% - 0.01px);
+				padding: calculateRem(15px) 0;
+				text-align: center;
+				color: white;
+				.currency{
+					display: inline-block;
+					vertical-align: bottom;
+					margin-right: 0.5em;
+					@include font-size(10px);
+				}
+				.price{
+					display: inline-block;
+					vertical-align: bottom;
+					height: calculateRem(30px);
+					line-height: calculateRem(30px);
+					@include font-size(24px);
+				}
+			}
+		}
+	}
+
+	.add-receiver{
+		margin-top: -1em;
+		border: solid 1px $gray;
+		text-align: center;
+		padding: 0.25em 0;
+		color: $gray;
+		opacity: 0.5;
+		cursor: pointer;
+		@include transition(0.5s, all, linear, 0s);
+		@include font-size(12px);
+		&:hover{
+			opacity: 1;
+		}
+	}
+
+	.order-footer{
+		margin: 1.5em 0;
+		padding: 1.5em 0;
+		border-top: solid 1px white;
+		.col-block{
+			margin: 0 -0.5em;
+			.col-2{
+				padding: 0 0.5em;
+				.btn{
+					@include font-size(12px);
+				}
+			}
+		}
+	}
+}
+
+@include pcsize{
+	.max-width{
+		>div{
+			padding: calculateRem(30px) 10%;
+		}
+	}
+
+	.search-block{
+		.search-form{
+			padding: 1.5em 0;
+			.max-width{
+				>div{
+					padding: 0 10%;
+				}
+			}
+			.title{
+				@include font-size(14px);
+			}
+			.field-group{
+				input{
+					@include font-size(14px);
+				}
+				button{
+					@include font-size(14px);
+					i{
+						font-size: 0.8em;
+					}
+				}
+			}
+		}
+
+		.max-width{
+			.search-btn{
+				margin-right: 10%;
+				@include font-size(14px);
+			}
+		}
+	}
+
+
+	header{
+		h1{
+			@include font-size(28px);
+		}
+		.owl-carousel{
+			margin: 1.5em 0;
+			@include font-size(14px);
+			.owl-stage-outer{
+				.owl-item{
+					padding: 0 1em;
+					padding-bottom: 100px;
+					margin-bottom: -100px;
+					+.owl-item{
+						border-left: solid 1px rgba($gray, .5);
+					}
+				}
+			}
+		}
+	}
+
+	main{
+		margin: 2em 0 1em;
+		@include font-size(16px);
+		h2{
+			@include font-size(18px);
+		}
+
+		.form-group{
+			>article{
+				position: relative;
+				@include floatclear();
+			}
+
+			.del_btn{
+				@include font-size(14px);
+			}
+
+			h3{
+				@include font-size(16px);
+			}
+			.receive-info{
+				float: left;
+				width: calc(100% - #{calculateRem(80px)} - 0.01px);
+			}
+			.field-group{
+				&.address-group{
+					margin: 1.5em 0;
+				}
+				.address{
+					@include font-size(14px);
+					.road{
+						&.road-2{
+							.field{
+								padding-right: calculateRem(14px * 0.7);
+							}
+						}
+						&.road-4{
+							.field{
+								padding-right: calculateRem(14px * 0.7 * 3);
+							}
+						}
+
+						.field{
+							line-height: 1.5;
+							@include font-size(14px);
+						}
+					}
+				}
+			}
+
+			.radio-group{
+				margin: 0;
+				.option{
+					input{
+						+label{
+							height: calculateRem(56px);
+							padding: 1.25em 0;
+						}
+					}
+				}
+			}
+
+			.shop-info{
+				position: absolute;
+				right: 0;
+				top: 0;
+				float: right;
+				width: calculateRem(80px);
+				height: 100%;
+				margin: 0;
+				.qtymodal{
+					float: none;
+					width: 100%;
+					.qty{
+						float: none;
+						width: 100%;
+						padding: calculateRem(25px) 0;
+						input{
+							@include font-size(28px);
+						}
+						label.error{
+							padding-left: 1em;
+							left: 100%;
+							top: 0;
+						}
+					}
+					.qty-controler{
+						float: none;
+						width: 100%;
+						height: calculateRem(40px);
+						border: none;
+						border-top: solid 1px white;
+						border-bottom: solid 1px white;
+						@include floatclear();
+						.plus, .less{
+							float: left;
+							width: calc(50% - 0.01px);
+							height: calculateRem(40px);
+							line-height: calculateRem(40px);
+							@include font-size(18px);
+						}
+						.less{
+							border-top: none;
+							border-left: solid 1px white;
+						}
+					}
+				}
+				.total{
+					position: absolute;
+					right: 0;
+					bottom: 0;
+					float: none;
+					width: 100%;
+					height: calc(100% - #{calculateRem(120px)});
+					padding: 0;
+					&:before{
+						@include vertical-align-middle();
+					}
+					.currency{
+						vertical-align: middle;
+					}
+					.price{
+						vertical-align: middle;
+						@include font-size(22px);
+					}
+				}
+			}
+		}
+
+		.add-receiver{
+			@include font-size(14px);
+		}
+
+		.order-footer{
+			.col-block{
+				.col-2{
+					.btn{
+						@include font-size(14px);
+					}
+				}
+			}
+		}
+	}
+
+
+}

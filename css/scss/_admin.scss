@@ -1,0 +1,215 @@
+main{
+	padding: 2.5% 5% 5%;
+	section{
+		margin-top: calculateRem(30px);
+		h1{
+			width: 7em;
+			font-weight: normal;
+			text-align: center;
+			line-height: 2;
+			color: #ffffff;
+			background: #96b6a6;
+			@include font-size(14px);
+		}
+		.order_list{
+			margin-top: calculateRem(30px);
+			@include font-size(12px);
+			.title{
+				line-height: 2.5;
+				border-bottom: solid 1px #96b6a6;
+				font-weight: bold;
+				@include floatclear();
+				div{
+					float: left;
+					padding: 0 0.5em;
+					&:nth-of-type(1){
+						width: calc(14% - 1em);	
+					}
+					&:nth-of-type(2){
+						width: calc(14% - 1em);	
+					}
+					&:nth-of-type(3){
+						width: calc(6% - 1em); 
+						text-align: right;	
+					}
+					&:nth-of-type(4){
+						width: calc(16% - 1em);	
+					}
+					&:nth-of-type(5){
+						width: calc(4% - 1em);
+						text-align: center;	
+					}
+					&:nth-of-type(6){
+						width: calc(24% - 1em);	
+					}
+					&:nth-of-type(7){
+						width: calc(12% - 1em);	
+					}
+					&:nth-of-type(8){
+						width: calc(7% - 1em);
+						text-align: center;
+						opacity: 0;
+					}
+					&:nth-of-type(9){
+						width: calc(3% - 1em);
+						text-align: center;
+					}
+				}
+			}
+			.persons{
+				border-bottom: solid 1px rgba(150, 182, 166, 0.2);
+				@include floatclear();
+				.publick_inf{
+					float: left;
+					width: 50%;
+					@include floatclear();
+					div{
+						float: left;
+						padding: 0.5em;
+						line-height: 1.5;
+						&:nth-of-type(1){
+							width: calc(28% - 1em);
+							color: rgba(150, 182, 166, 0.5);
+							a{
+								color: #96b6a6;
+							}
+						}
+						&:nth-of-type(2){
+							width: calc(28% - 1em);	
+						}
+						&:nth-of-type(3){
+							width: calc(12% - 1em); 
+							text-align: right;	
+						}
+						&:nth-of-type(4){
+							width: calc(32% - 1em);
+							button{
+								width: 5em;
+								margin-top: 0.25em;
+								border: solid 1px #96b6a6;
+								color: #96b6a6;
+								background: #ffffff;
+								line-height: 1.5;
+								@include border-radius(0);
+							}
+						}
+					}
+				}
+				.person_inf{
+					float: left;
+					width: 50%;
+					.person{
+						div{
+							display: inline-block;
+							vertical-align: middle;
+							padding: 0.5em;
+							line-height: 1.5;
+							&:nth-of-type(1){
+								width: calc(8% - 1em);
+								text-align: center;
+							}
+							&:nth-of-type(2){
+								width: calc(48% - 1em);	
+							}
+							&:nth-of-type(3){
+								width: calc(24% - 1em);	
+							}
+							&:nth-of-type(4){
+								width: calc(14% - 1em);
+								text-align: center;
+								button{
+									width: 4em;
+									margin-top: 0.25em;
+									border: solid 1px #96b6a6;
+									color: #96b6a6;
+									background: #ffffff;
+									line-height: 1.5;
+									@include border-radius(0);
+								}
+							}
+							&:nth-of-type(5){
+								width: calc(6% - 1em);
+								text-align: center;
+								input{
+									display: none;
+									&+label{
+										.icon-checkbox{
+											display: block;
+											&+.icon-check{
+												display: none;
+											}
+										}
+									}
+									&:checked{
+										&+label{
+											.icon-checkbox{
+												display: none;
+												&+.icon-check{
+													display: block;
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						&+.person{
+							border-top: dashed 1px rgba(150, 182, 166, 0.5);
+						}
+					}
+				}
+			}
+			.total{
+				margin-top: 0.5em;
+				text-align: right;
+				line-height: 2;
+				span{
+					@include font-size(16px);
+				}
+				button{
+					width: 4em;
+					border: solid 1px #96b6a6;
+					background: #ffffff;
+					color: #96b6a6;
+					margin-left: 1em;
+					line-height: 1.5;
+				}
+			}
+		}
+		&+section{
+			margin-top: calculateRem(60px);
+		}
+	}
+}
+
+nav{
+	position: fixed;
+	right: 1rem;
+	top: calculateRem(15px);
+	li{
+		border: solid 1px #96b6a6;
+		width: calculateRem(30px);
+		height: calculateRem(30px);
+		text-align: center;
+		background: rgba(150, 182, 166, 0.8);
+		color: #ffffff;
+		cursor: pointer;
+		@include font-size(16px);
+		@include border-radius(50%);
+		@include transition-duration(0.5s);
+		i{
+			line-height: calculateRem(30px);
+		}
+		&+li{
+			margin-top: 0.5rem;
+		}
+		&:hover{
+			background: rgba(255, 255, 255, 0.8);
+			color: #96b6a6;
+		}
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	@import "admin_pad";
+}

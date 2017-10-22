@@ -1,0 +1,112 @@
+main.order{
+	padding: 10% 5%;
+	section{
+		.big_title{
+			text-align: center;
+		}
+		&.subtitle{
+			.order_num{
+				display: block;
+				margin: 0.5em;
+			}
+		}
+
+		&.send_mail{
+			form{
+				text-align: right;
+				input[type=email]{
+					width: calc(100% - 1em);
+					display: block;
+				}
+				input[type=submit]{
+					width: 100%;
+					display: block;
+					margin-top: 0.5em;
+				}
+			}
+		}
+
+		&.addressee{
+			.table{
+				.addressee_person{
+					.person{
+						.person_inf{
+							.field{
+								&:nth-of-type(4){
+									label{
+										display: block;
+									}
+									.road{
+										float: left;
+										padding-left: 0;
+									}
+								}
+							}
+						}
+						.order_status{
+							.all_status{
+								.status{
+									display: block;
+									margin: auto;
+									width: 80%;
+								}
+								.line{
+									display: block;
+									margin: auto;
+									width: 1px;
+									height: 1rem;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.payment{
+			.table{
+				.btn{
+					&.atm{
+						.atm_inf{
+							>span{
+								float: none;
+								width: 100%;
+							}
+							p{
+								float: none;
+								width: 100%;
+								span{
+									display: block;
+								}
+							}
+						}
+						form{
+							.field{
+								width: 100%;
+							}
+							button, .button{
+								width: 100%;
+								margin-top: 0.5em;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.form_bottom{
+			&:after{
+				width: 100%;
+			}
+		}
+	}
+	&.error{
+		line-height: 1.5;
+		@include font-size(14px);
+		form{
+			input{
+				width: 80%;
+			}
+		}
+	}
+}

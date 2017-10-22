@@ -1,0 +1,363 @@
+.back_btn {
+  position: fixed;
+  z-index: 3;
+  top: 1em;
+  display: inline-block;
+  background: white;
+  padding: 0.5em 1em 0.5em 0;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  color: #4a4a4a;
+  cursor: pointer;
+  transition: 0.3s all linear 0s;
+  -moz-transition: 0.3s all linear 0s;
+  -webkit-transition: 0.3s all linear 0s;
+  -o-transition: 0.3s all linear 0s; }
+  .back_btn:hover {
+    padding-left: 1em;
+    color: #4a4a4a; }
+  .back_btn:before {
+    display: inline-block;
+    text-align: center;
+    width: 2em; }
+
+header {
+  margin-top: 1.875rem; }
+  header .size {
+    width: 90%;
+    margin: 0 auto;
+    padding: 1em 0;
+    border-bottom: solid 1px white; }
+    header .size:after {
+      content: "";
+      display: block;
+      clear: both; }
+    header .size .buyer_name {
+      font-weight: bold;
+      float: left;
+      width: 5em;
+      padding: 0 0.5em; }
+    header .size .buyer_phone {
+      float: left;
+      width: calc(100% - 5em - 0.01px);
+      padding: 0 0.5em; }
+
+main .receiver {
+  width: calc(90% - 5em - 0.01px);
+  margin: 5%;
+  margin-left: calc(5% + 5em);
+  background: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1); }
+  main .receiver .receiver_info {
+    padding: 1em;
+    background: #345f52;
+    color: white;
+    letter-spacing: 1px;
+    text-align: justify; }
+    main .receiver .receiver_info .name {
+      font-weight: bold;
+      font-size: 14px;
+      font-size: 0.875rem; }
+    main .receiver .receiver_info .content {
+      padding: 0.5em 0;
+      font-size: 10px;
+      font-size: 0.625rem; }
+  main .receiver .qty {
+    border-bottom: solid 1px #345f52; }
+    main .receiver .qty:after {
+      content: "";
+      display: block;
+      clear: both; }
+    main .receiver .qty .qty-info {
+      float: left;
+      width: calc(50% - 0.01px);
+      text-align: center;
+      padding: 0.5em 0;
+      font-size: 18px;
+      font-size: 1.125rem; }
+      main .receiver .qty .qty-info + .qty-info {
+        border-left: solid 1px #345f52; }
+  main .receiver .collapse_btn {
+    position: relative;
+    cursor: pointer;
+    width: 1em;
+    height: 1em;
+    margin: 1em; }
+    main .receiver .collapse_btn:before, main .receiver .collapse_btn:after {
+      content: "";
+      position: absolute;
+      background: #9b9b9b;
+      transition: 0.3s all linear 0s;
+      -moz-transition: 0.3s all linear 0s;
+      -webkit-transition: 0.3s all linear 0s;
+      -o-transition: 0.3s all linear 0s; }
+    main .receiver .collapse_btn:before {
+      width: 100%;
+      height: 2px;
+      top: calc(50% - 1px);
+      left: 0; }
+    main .receiver .collapse_btn:after {
+      width: 2px;
+      height: 100%;
+      top: 0;
+      left: calc(50% - 1px); }
+    main .receiver .collapse_btn[aria-expanded="true"]:after {
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      transform: rotate(90deg); }
+  main .receiver .receiver_status {
+    margin-top: -3em;
+    padding: 1em;
+    text-align: justify; }
+    main .receiver .receiver_status .status + .status {
+      margin-top: 1em; }
+    main .receiver .receiver_status .status .title {
+      color: #9b9b9b;
+      transform-origin: 0 50%;
+      margin-bottom: 0.25em;
+      -webkit-transform: scale(0.7);
+      -moz-transform: scale(0.7);
+      -ms-transform: scale(0.7);
+      -o-transform: scale(0.7);
+      transform: scale(0.7);
+      font-size: 12px;
+      font-size: 0.75rem; }
+    main .receiver .receiver_status .status.payment .type .type_name {
+      font-size: 12px;
+      font-size: 0.75rem; }
+      main .receiver .receiver_status .status.payment .type .type_name span {
+        color: #9b9b9b; }
+        main .receiver .receiver_status .status.payment .type .type_name span.notice {
+          color: #be4248; }
+        main .receiver .receiver_status .status.payment .type .type_name span.success {
+          color: #345f52; }
+    main .receiver .receiver_status .status.payment .type .type_info {
+      margin: 0.25em 0;
+      font-size: 12px;
+      font-size: 0.75rem; }
+      main .receiver .receiver_status .status.payment .type .type_info.atm .myatm-info {
+        padding: 0.5em;
+        background: rgba(52, 95, 82, 0.1); }
+        main .receiver .receiver_status .status.payment .type .type_info.atm .myatm-info .info {
+          margin: 0.25em 0; }
+          main .receiver .receiver_status .status.payment .type .type_info.atm .myatm-info .info:after {
+            content: "";
+            display: block;
+            clear: both; }
+          main .receiver .receiver_status .status.payment .type .type_info.atm .myatm-info .info .info-title {
+            float: left;
+            width: 5em; }
+          main .receiver .receiver_status .status.payment .type .type_info.atm .myatm-info .info .info-content {
+            color: #9b9b9b;
+            float: right;
+            width: calc(100% - 5em - 0.01px); }
+      main .receiver .receiver_status .status.payment .type .type_info.atm .youatm-info {
+        margin: 1em 0; }
+        main .receiver .receiver_status .status.payment .type .type_info.atm .youatm-info .field-group {
+          margin: 1.25em 0; }
+        main .receiver .receiver_status .status.payment .type .type_info.atm .youatm-info .btn {
+          font-size: 12px;
+          font-size: 0.75rem; }
+      main .receiver .receiver_status .status.payment .type .type_info.atm .atm-ready {
+        color: #9b9b9b;
+        font-size: 10px;
+        font-size: 0.625rem; }
+      main .receiver .receiver_status .status.payment .type .type_info.cash form:after {
+        content: "";
+        display: block;
+        clear: both; }
+      main .receiver .receiver_status .status.payment .type .type_info.cash form .title {
+        color: #4a4a4a; }
+      main .receiver .receiver_status .status.payment .type .type_info.cash form .select-group {
+        float: left;
+        width: calc((100% - 1em) / 2); }
+      main .receiver .receiver_status .status.payment .type .type_info.cash form .btn {
+        float: right;
+        width: calc((100% - 1em) / 2);
+        font-size: 12px;
+        font-size: 0.75rem; }
+      main .receiver .receiver_status .status.payment .type .type_info.cash .cash-ready {
+        color: #9b9b9b;
+        font-size: 10px;
+        font-size: 0.625rem; }
+    main .receiver .receiver_status .status.flowchart .type .part {
+      border-left: solid 2px #9b9b9b;
+      padding-left: 1em;
+      padding-bottom: 2em;
+      font-size: 12px;
+      font-size: 0.75rem; }
+      main .receiver .receiver_status .status.flowchart .type .part.active {
+        border-color: #345f52; }
+        main .receiver .receiver_status .status.flowchart .type .part.active .part_name {
+          color: #345f52; }
+      main .receiver .receiver_status .status.flowchart .type .part.ready {
+        border-color: rgba(155, 155, 155, 0.5); }
+        main .receiver .receiver_status .status.flowchart .type .part.ready .part_name {
+          color: rgba(155, 155, 155, 0.5); }
+        main .receiver .receiver_status .status.flowchart .type .part.ready .part_action {
+          color: rgba(155, 155, 155, 0.5); }
+          main .receiver .receiver_status .status.flowchart .type .part.ready .part_action a {
+            color: rgba(155, 155, 155, 0.5); }
+      main .receiver .receiver_status .status.flowchart .type .part .part_name {
+        margin-bottom: 0.25em; }
+      main .receiver .receiver_status .status.flowchart .type .part .part_action {
+        color: #9b9b9b;
+        font-size: 10px;
+        font-size: 0.625rem; }
+        main .receiver .receiver_status .status.flowchart .type .part .part_action a {
+          color: #345f52;
+          text-decoration: underline; }
+        main .receiver .receiver_status .status.flowchart .type .part .part_action .btn {
+          width: 50%;
+          font-size: 10px;
+          font-size: 0.625rem; }
+    main .receiver .receiver_status .status.remark .type .content {
+      font-size: 12px;
+      font-size: 0.75rem; }
+  main .receiver.success .receiver_info {
+    background: rgba(155, 155, 155, 0.5); }
+  main .receiver.success .qty {
+    border-color: rgba(155, 155, 155, 0.5); }
+    main .receiver.success .qty .qty-info + .qty-info {
+      border-color: rgba(155, 155, 155, 0.5); }
+  main .receiver.notice .receiver_info {
+    background: #be4248; }
+  main .receiver.notice .qty {
+    border-color: #be4248; }
+    main .receiver.notice .qty .qty-info + .qty-info {
+      border-color: #be4248; }
+
+@media only screen and (min-width: 769px) {
+  header .size {
+    width: 80%;
+    margin: 1.875rem auto; }
+    header .size .buyer_name {
+      width: calc(20% - 0.01px); }
+    header .size .buyer_phone {
+      width: calc(80% - 0.01px); }
+
+  main .receiver {
+    position: relative;
+    width: 64%;
+    margin: 2.5%;
+    margin-left: 26%; }
+    main .receiver:after {
+      content: "";
+      display: block;
+      clear: both; }
+    main .receiver .main_info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30%;
+      height: 100%;
+      border-right: solid 1px #345f52;
+      border-left: solid 1px #345f52; }
+    main .receiver .receiver_info {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      padding: 1.5em;
+      padding-bottom: 3.125rem; }
+      main .receiver .receiver_info .name {
+        font-size: 16px;
+        font-size: 1rem; }
+      main .receiver .receiver_info .content {
+        font-size: 12px;
+        font-size: 0.75rem; }
+    main .receiver .qty {
+      position: absolute;
+      z-index: 2;
+      width: 100%;
+      right: 0;
+      bottom: 0;
+      background: white; }
+      main .receiver .qty .qty-info {
+        font-size: 20px;
+        font-size: 1.25rem; }
+    main .receiver .collapse_btn {
+      display: none; }
+    main .receiver .receiver_status {
+      width: calc(70% - 1px);
+      float: right;
+      margin: 0;
+      padding: 1.5em;
+      display: block;
+      height: auto !important; }
+      main .receiver .receiver_status .status .title {
+        font-size: 14px;
+        font-size: 0.875rem; }
+      main .receiver .receiver_status .status.payment .type .type_name {
+        font-size: 14px;
+        font-size: 0.875rem; }
+      main .receiver .receiver_status .status.payment .type .type_info {
+        font-size: 14px;
+        font-size: 0.875rem; }
+        main .receiver .receiver_status .status.payment .type .type_info.atm:after {
+          content: "";
+          display: block;
+          clear: both; }
+        main .receiver .receiver_status .status.payment .type .type_info.atm .myatm-info:after {
+          content: "";
+          display: block;
+          clear: both; }
+        main .receiver .receiver_status .status.payment .type .type_info.atm .myatm-info .info {
+          float: left;
+          width: 50%; }
+          main .receiver .receiver_status .status.payment .type .type_info.atm .myatm-info .info:after {
+            content: "";
+            display: block;
+            clear: both; }
+        main .receiver .receiver_status .status.payment .type .type_info.atm .youatm-info:after {
+          content: "";
+          display: block;
+          clear: both; }
+        main .receiver .receiver_status .status.payment .type .type_info.atm .youatm-info .field-group {
+          float: left;
+          width: calc((100% - 1em) / 2 - 0.01px); }
+          main .receiver .receiver_status .status.payment .type .type_info.atm .youatm-info .field-group + .field-group {
+            margin-left: 1em; }
+        main .receiver .receiver_status .status.payment .type .type_info.atm .youatm-info .btn {
+          font-size: 14px;
+          font-size: 0.875rem; }
+        main .receiver .receiver_status .status.payment .type .type_info.atm .atm-ready {
+          font-size: 12px;
+          font-size: 0.75rem; }
+        main .receiver .receiver_status .status.payment .type .type_info.cash form .btn {
+          font-size: 14px;
+          font-size: 0.875rem; }
+        main .receiver .receiver_status .status.payment .type .type_info.cash .cash-ready {
+          font-size: 12px;
+          font-size: 0.75rem; }
+      main .receiver .receiver_status .status.flowchart .type:after {
+        content: "";
+        display: block;
+        clear: both; }
+      main .receiver .receiver_status .status.flowchart .type .part {
+        float: left;
+        width: calc(100% / 4 - 0.01px);
+        border-top: solid 2px #9b9b9b;
+        border-left: none;
+        padding-top: 1em;
+        padding-left: 0.5em;
+        padding-bottom: 0;
+        font-size: 14px;
+        font-size: 0.875rem; }
+        main .receiver .receiver_status .status.flowchart .type .part .part_action {
+          font-size: 12px;
+          font-size: 0.75rem; }
+          main .receiver .receiver_status .status.flowchart .type .part .part_action .btn {
+            width: 100%;
+            font-size: 12px;
+            font-size: 0.75rem; }
+      main .receiver .receiver_status .status.remark .type .content {
+        font-size: 14px;
+        font-size: 0.875rem; }
+    main .receiver.success .main_info {
+      border-color: rgba(155, 155, 155, 0.5); }
+    main .receiver.notice .main_info {
+      border-color: #be4248; } }
+
+/*# sourceMappingURL=order.css.map */

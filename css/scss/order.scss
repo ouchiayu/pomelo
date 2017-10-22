@@ -1,0 +1,457 @@
+@import "layout/mixins";
+@import "layout/variables";
+
+.back_btn{
+	position: fixed;
+	z-index: 3;
+	top: 1em;
+	display: inline-block;
+	background: white;
+	padding: 0.5em 1em 0.5em 0;
+	box-shadow: 0 2px 4px 0 rgba(black, 0.1);
+	color: $font-color;
+	cursor: pointer;
+	@include transition(0.3s, all, linear, 0s);
+	&:hover{
+		padding-left: 1em;
+		color: $font-color;
+	}
+	&:before{
+		display: inline-block;
+		text-align: center;
+		width: 2em;
+	}
+}
+
+header{
+	margin-top: calculateRem(30px);
+	.size{
+		width: 90%;
+		margin: 0 auto;
+		padding: 1em 0;
+		border-bottom: solid 1px white;
+		@include floatclear();
+		.buyer_name{
+			font-weight: bold;
+			float: left;
+			width: 5em;
+			padding: 0 0.5em;
+		}
+		.buyer_phone{
+			float: left;
+			width: calc(100% - 5em - 0.01px);
+			padding: 0 0.5em;
+		}
+	}
+}
+
+main{
+	.receiver{
+		width: calc(90% - 5em - 0.01px);
+		margin: 5%;
+		margin-left: calc(5% + 5em);
+		background: white;
+		box-shadow: 0 2px 4px 0 rgba(black, 0.1);
+		.receiver_info{
+			padding: 1em;
+			background: $green;
+			color: white;
+			letter-spacing: 1px;
+			text-align: justify;
+			.name{
+				font-weight: bold;
+				@include font-size(14px);
+			}
+			.content{
+				padding: 0.5em 0;
+				@include font-size(10px);
+			}
+		}
+
+		.qty{
+			border-bottom: solid 1px $green;
+			@include floatclear();
+			.qty-info{
+				float: left;
+				width: calc(50% - 0.01px);
+				text-align: center;
+				padding: 0.5em 0;
+				@include font-size(18px);
+				+.qty-info{
+					border-left: solid 1px $green;
+				}
+			}
+		}
+		
+		.collapse_btn{
+			position: relative;
+			cursor: pointer;
+			width: 1em;
+			height: 1em;
+			margin: 1em;
+			&:before, &:after{
+				content: "";
+				position: absolute;
+				background: $gray;
+				@include transition(0.3s, all, linear, 0s);
+			}
+			&:before{
+				width: 100%;
+				height: 2px;
+				top: calc(50% - 1px);
+				left: 0;
+			}
+			&:after{
+				width: 2px;
+				height: 100%;
+				top: 0;
+				left: calc(50% - 1px);
+			}
+			&[aria-expanded="true"]{
+				&:after{
+					@include transform(rotate(90deg));
+				}
+			}
+		}
+
+		.receiver_status{
+			margin-top: -1em * 3;
+			padding: 1em;
+			text-align: justify;
+			.status{
+				+.status{
+					margin-top: 1em;
+				}
+				.title{
+					color: $gray;
+					transform-origin: 0 50%;
+					margin-bottom: 0.25em;
+					@include transform(scale(0.7));
+					@include font-size(12px);
+				}
+				&.payment{
+					.type{
+						.type_name{
+							@include font-size(12px);
+							span{
+								color: $gray;
+								&.notice{
+									color: $red;
+								}
+								&.success{
+									color: $green;
+								}
+							}
+						}
+						.type_info{
+							margin: 0.25em 0;
+							@include font-size(12px);
+							&.atm{
+								.myatm-info{
+									padding: 0.5em;
+									background: rgba($green, .1);
+									.info{
+										margin: 0.25em 0;
+										@include floatclear();
+										.info-title{
+											float: left;
+											width: 5em;
+										}
+										.info-content{
+											color: $gray;
+											float: right;
+											width: calc(100% - 5em - 0.01px);
+										}
+									}
+								}
+								.youatm-info{
+									margin: 1em 0;
+									.field-group{
+										margin: 1.25em 0;
+									}
+									.btn{
+										@include font-size(12px);
+									}
+								}
+								.atm-ready{
+									color: $gray;
+									@include font-size(10px);
+								}
+							}
+							&.cash{
+								form{
+									@include floatclear();
+									.title{
+										color: $font-color;
+									}
+									.select-group{
+										float: left;
+										width: calc((100% - 1em) / 2);
+									}
+									.btn{
+										float: right;
+										width: calc((100% - 1em) / 2);
+										@include font-size(12px);
+									}
+								}
+								.cash-ready{
+									color: $gray;
+									@include font-size(10px);
+								}
+							}
+						}
+					}
+				}
+				&.flowchart{
+					.type{
+						.part{
+							border-left: solid 2px $gray;
+							padding-left: 1em;
+							padding-bottom: 2em;
+							@include font-size(12px);
+							&.active{
+								border-color: $green;
+								.part_name{
+									color: $green;
+								}
+							}
+							&.ready{
+								border-color: rgba($gray, .5);
+								.part_name{
+									color: rgba($gray, .5);
+								}
+								.part_action{
+									color: rgba($gray, .5);
+									a{
+										color: rgba($gray, .5);
+									}
+								}
+							}
+							.part_name{
+								margin-bottom: 0.25em;
+							}
+							.part_action{
+								color: $gray;
+								@include font-size(10px);
+								a{
+									color: $green;
+									text-decoration: underline;
+								}
+								.btn{
+									width: 50%;
+									@include font-size(10px);
+								}
+							}
+						}
+					}
+				}
+				&.remark{
+					.type{
+						.content{
+							@include font-size(12px);
+						}
+					}
+				}
+			}
+		}
+
+		&.success{
+			.receiver_info{
+				background: rgba($gray, .5);
+			}
+			.qty{
+				border-color: rgba($gray, .5);
+				.qty-info{
+					+.qty-info{
+						border-color: rgba($gray, .5);
+					}
+				}
+			}
+		}
+
+		&.notice{
+			.receiver_info{
+				background: $red;
+			}
+			.qty{
+				border-color: $red;
+				.qty-info{
+					+.qty-info{
+						border-color: $red;
+					}
+				}
+			}
+		}
+	}
+}
+
+@include pcsize{
+	header{
+		.size{
+			width: 80%;
+			margin: calculateRem(30px) auto;
+			.buyer_name{
+				width: calc(20% - 0.01px);
+			}
+			.buyer_phone{
+				width: calc(80% - 0.01px);
+			}
+
+		}
+	}
+
+	main{
+		.receiver{
+			position: relative;
+			width: 64%;
+			margin: 2.5%;
+			margin-left: 26%;
+			@include floatclear();
+			
+			.main_info{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 30%;
+				height: 100%;
+				border-right: solid 1px $green;
+				border-left: solid 1px $green;
+			}
+
+			.receiver_info{
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				height: 100%;
+				padding: 1.5em;
+				padding-bottom: calculateRem(50px);
+				.name{
+					@include font-size(16px);
+				}
+				.content{
+					@include font-size(12px);
+				}
+			}
+
+			.qty{
+				position: absolute;
+				z-index: 2;
+				width: 100%;
+				right: 0;
+				bottom: 0;
+				background: white;
+				.qty-info{
+					@include font-size(20px);
+				}
+			}
+			
+			.collapse_btn{
+				display: none;
+			}
+
+			.receiver_status{
+				width: calc(70% - 1px);
+				float: right;
+				margin: 0;
+				padding: 1.5em;
+				display: block;
+				height: auto !important;
+				.status{
+					.title{
+						@include font-size(14px);
+					}
+					&.payment{
+						.type{
+							.type_name{
+								@include font-size(14px);
+							}
+							.type_info{
+								@include font-size(14px);
+								&.atm{
+									@include floatclear();
+									.myatm-info{
+										@include floatclear();
+										.info{
+											float: left;
+											width: 50%;
+											@include floatclear();
+										}
+									}
+									.youatm-info{
+										@include floatclear();
+										.field-group{
+											float: left;
+											width: calc((100% - 1em) / 2 - 0.01px);
+											+.field-group{
+												margin-left: 1em;
+											}
+										}
+										.btn{
+											@include font-size(14px);
+										}
+									}
+									.atm-ready{
+										@include font-size(12px);
+									}
+								}
+								&.cash{
+									form{
+										.btn{
+											@include font-size(14px);
+										}
+									}
+									.cash-ready{
+										@include font-size(12px);
+									}
+								}
+							}
+						}
+					}
+					&.flowchart{
+						.type{
+							@include floatclear();
+							.part{
+								float: left;
+								width: calc(100% / 4 - 0.01px);
+								border-top: solid 2px $gray;
+								border-left: none;
+								padding-top: 1em;
+								padding-left: 0.5em;
+								padding-bottom: 0;
+								@include font-size(14px);
+								.part_action{
+									@include font-size(12px);
+									.btn{
+										width: 100%;
+										@include font-size(12px);
+									}
+								}
+							}
+						}
+					}
+					&.remark{
+						.type{
+							.content{
+								@include font-size(14px);
+							}
+						}
+					}
+				}
+			}
+
+			&.success{
+				.main_info{
+					border-color: rgba($gray, .5);
+				}
+			}
+
+			&.notice{
+				.main_info{
+					border-color: $red;
+				}
+			}
+
+		}
+	}
+
+}

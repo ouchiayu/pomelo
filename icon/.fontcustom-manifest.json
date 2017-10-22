@@ -1,0 +1,122 @@
+{
+  "checksum": {
+    "previous": "70b6fe6f3a14d8442405e0260bd3866e1ea35ee6375283e47f30170af5ddb21d",
+    "current": "70b6fe6f3a14d8442405e0260bd3866e1ea35ee6375283e47f30170af5ddb21d"
+  },
+  "fonts": [
+    "fontcustom/fontcustom_70b6fe6f3a14d8442405e0260bd3866e.ttf",
+    "fontcustom/fontcustom_70b6fe6f3a14d8442405e0260bd3866e.svg",
+    "fontcustom/fontcustom_70b6fe6f3a14d8442405e0260bd3866e.woff",
+    "fontcustom/fontcustom_70b6fe6f3a14d8442405e0260bd3866e.eot"
+  ],
+  "glyphs": {
+    "add": {
+      "codepoint": 61696,
+      "source": "./add.svg"
+    },
+    "address": {
+      "codepoint": 61697,
+      "source": "./address.svg"
+    },
+    "arrive": {
+      "codepoint": 61710,
+      "source": "./arrive.svg"
+    },
+    "bank": {
+      "codepoint": 61706,
+      "source": "./bank.svg"
+    },
+    "box": {
+      "codepoint": 61704,
+      "source": "./box.svg"
+    },
+    "check": {
+      "codepoint": 61708,
+      "source": "./check.svg"
+    },
+    "checkbox": {
+      "codepoint": 61709,
+      "source": "./checkbox.svg"
+    },
+    "date": {
+      "codepoint": 61707,
+      "source": "./date.svg"
+    },
+    "del": {
+      "codepoint": 61698,
+      "source": "./del.svg"
+    },
+    "down": {
+      "codepoint": 61705,
+      "source": "./down.svg"
+    },
+    "home": {
+      "codepoint": 61714,
+      "source": "./home.svg"
+    },
+    "msg": {
+      "codepoint": 61699,
+      "source": "./msg.svg"
+    },
+    "name": {
+      "codepoint": 61700,
+      "source": "./name.svg"
+    },
+    "order": {
+      "codepoint": 61711,
+      "source": "./order.svg"
+    },
+    "pack": {
+      "codepoint": 61712,
+      "source": "./pack.svg"
+    },
+    "phone": {
+      "codepoint": 61701,
+      "source": "./phone.svg"
+    },
+    "search": {
+      "codepoint": 61702,
+      "source": "./search.svg"
+    },
+    "send": {
+      "codepoint": 61703,
+      "source": "./send.svg"
+    },
+    "ship": {
+      "codepoint": 61713,
+      "source": "./ship.svg"
+    }
+  },
+  "options": {
+    "autowidth": false,
+    "config": "fontcustom.yml",
+    "css_selector": ".icon-{{glyph}}",
+    "debug": false,
+    "font_ascent": 448,
+    "font_descent": 64,
+    "font_design_size": 16,
+    "font_em": 512,
+    "font_name": "fontcustom",
+    "force": false,
+    "input": {
+      "templates": ".",
+      "vectors": "."
+    },
+    "no_hash": false,
+    "output": {
+      "css": "fontcustom",
+      "fonts": "fontcustom",
+      "preview": "fontcustom"
+    },
+    "preprocessor_path": null,
+    "quiet": false,
+    "templates": [
+      "css",
+      "preview"
+    ]
+  },
+  "templates": [
+    "fontcustom/fontcustom.css",
+    "fontcustom/fontcustom-preview.html"
+  ]
+}

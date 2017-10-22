@@ -1,0 +1,109 @@
+@import "layout/mixins";
+@import "layout/variables";
+
+$pc_width: 1440;
+$pad_width: 768;
+$mobile_width: 320;
+
+@for $i from 300 through $pc_width{
+    @if $i%5 == 0{
+        @if $i <= 768{
+            @media only screen and (min-width: #{$i}px) {
+                html{
+                    font-size: ((16px / $mobile_width) * $i);
+                }
+            }
+        }@else{
+        	@media only screen and (min-width: #{$i}px) {
+        	    html{
+        	        font-size: ((16px / $pc_width) * $i);
+        	    }
+        	}
+        }
+    }
+
+    @if $i == 768{
+        @media only screen and (min-width: #{$i}px) {
+            html{
+                font-size: ((16px / $mobile_width) * $i);
+            }
+        }
+    }
+
+    @if $i == 769{
+        @media only screen and (min-width: #{$i}px) {
+            html{
+                font-size: ((16px / $pc_width) * $i);
+            }
+        }
+    }
+}
+
+body{
+    font-family: 'Roboto', 'Batanq', 'Hiragino Kaku Gothic Pro', 'Meiryo', 'Helvetica', 'Arial', 'Noto Sans CJK TC', 'Noto Sans CJK', 'Heiti TC', 'Microsoft YaHei', 'Microsoft JhengHei', sans-serif;
+    position: relative;
+    font-weight: 300;
+    background: $body-bg;
+    color: $font-color;
+    line-height: 1.5;
+    h1, h2, h3, h4, h5, h6{
+        margin: 0;
+        font-weight: 300;
+    }
+}
+
+.mobile{
+    display: block;
+    @include pcsize{
+        display: none;
+    }
+}
+.pc{
+    display: none;
+    @include pcsize{
+        display: block;
+    }
+}
+
+.col-block{
+    @include floatclear();
+    &.havmargin{
+        .col-b-2{
+            +.col-b-2{
+                margin-top: 1.5em;
+            }
+        }
+    }
+    .col-3{
+        float: left;
+        width: calc(100% / 3 - 0.01px);
+    }
+    .col-2{
+        float: left;
+        width: calc(100% / 2 - 0.01px);
+    }
+    @include pcsize{
+        margin: 0 -0.5em;
+        &.havmargin{
+            .col-b-2{
+                +.col-b-2{
+                    margin-top: 0;
+                }
+            }
+        }
+        .col-b-2{
+            float: left;
+            width: calc(100% / 2 - 0.01px);
+            padding: 0 0.5em;
+        }
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .max-width{
+        max-width: 1440px;
+        margin: auto;
+    }
+}
+
+@import "layout/form";

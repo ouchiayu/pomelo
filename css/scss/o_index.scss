@@ -1,0 +1,336 @@
+.product{
+	width: 45%;
+	margin: 10vw auto;
+	.picture{
+		img{
+			display: inline-block;
+			width: 100%;
+			&.mobile{
+				display: none;
+			}
+		}
+	}
+	.text{
+		width: 100%;
+		text-align: right;
+		padding: calculateRem(60px) 0;
+		img{
+			width: 55%;
+		}
+	}
+}
+main{
+	max-width: 652px;
+	width: 80%;
+	margin: 10vw auto;
+	border-bottom: solid 1px #ffffff;
+	section{
+		margin-bottom: 3em;
+		@include floatclear();
+		.big_title{
+			float: left;
+			width: 6.5em;
+		}
+		.table{
+			float: right;
+			width: calc(100% - 8em - 1.5px);
+			border-left: solid 1.5px #ffffff;
+			padding-left: 1.5em;
+			@include floatclear();
+			.field{
+				position: relative;
+				float: left;
+				border-bottom: solid 1px #ffffff;
+				margin-bottom: 0.5em;
+				@include floatclear();
+				@include transition-duration(0.5s);
+				label{
+					float: left;
+					width: calculateRem(32px);
+					line-height: calculateRem(32px);
+					text-align: center;
+					i{
+						@include font-size(16px);
+					}
+					&.error{
+						display: none;
+					}
+				}
+				input{
+					float: left;
+					width: calc(100% - #{calculateRem(32px)});
+					background: none;
+					border: none;
+					line-height: calculateRem(32px);
+					outline: none;
+					color: #ffffff;
+					letter-spacing: 1px;
+					@include font-size(14px);
+					@include placeholder(rgba(255, 255, 255, 0.6));
+				}
+				&.error{
+					border-bottom: solid 1px #fbcdd2;
+				}
+			}
+		}
+		button{
+			background: none;
+			border: solid 1px #ffffff;
+			color: #ffffff;
+			letter-spacing: 1px;
+			@include border-radius(0);
+		}
+
+		&.purchaser{
+			.table{
+				.field{
+					width: calc((100% - 1em) / 2);
+					&:nth-of-type(2){
+						margin-left: 1em;
+					}
+				}
+			}
+		}
+
+		&.addressee{
+			.table{
+				.addressee_person{
+					.person{
+						.person_inf{
+							display: inline-block;
+							vertical-align: middle;
+							width: calc(100% - 2em);
+							.field{
+								&:nth-of-type(1), &:nth-of-type(2){
+									width: calc((100% - 8em) / 2);
+									margin-right: 1em;
+								}
+								&:nth-of-type(3){
+									width: 6em;
+									input{
+										width: calc(100% - #{calculateRem(48px)});
+										text-align: center;
+									}
+									span{
+										display: block;
+										float: left;
+										width: calculateRem(16px);
+										line-height: calculateRem(32px);
+									}
+								}
+								&:nth-of-type(4){
+									width: 100%;
+									.county, .district, .zipcode{
+										float: left;
+										&.select_style{
+											line-height: calculateRem(32px);
+											height: calculateRem(32px);
+											position: relative;
+											overflow: hidden;
+											select{
+												position: absolute;
+												left: 0;
+												z-index: 1;
+												width: calc(100% + 30px);
+												height: 100%;
+												line-height: calculateRem(32px);
+												letter-spacing: 1px;
+												color: #ffffff;
+												@include font-size(14px);
+											}
+											i{
+												position: absolute;
+												z-index: 2;
+												width: 1rem;
+												height: calculateRem(32px);
+												right: 0;
+												@include font-size(12px);
+												line-height: calculateRem(32px);
+												background: #96b6a6;
+												color: #ffffff;
+												color: rgba(255, 255, 255, 0.6);
+											}
+										}
+									}
+									.county{
+										width: 4rem;
+									}
+									.district{
+										width: 5rem;
+										margin-left: 0.5rem;
+									}
+									.zipcode{
+										width: 4rem;
+										// margin-left: 1em;
+										input{
+											position: relative;
+											width: 100%;
+											text-align: center;
+											margin: 0;
+										}
+									}
+									.road{
+										width: calc(100% - #{calculateRem(32px)} - 14rem);
+										margin-left: 0.5rem;
+									}
+								}
+								&:nth-of-type(5){
+									width: 100%;
+								}
+							}
+						}
+						.person_del{
+							display: inline-block;
+							vertical-align: middle;
+							width: 2em;
+							text-align: right;
+							cursor: pointer;
+						}
+						&+.person{
+							margin-top: 1.5em;
+							padding-top: 1.5em;
+							border-top: dashed 1px #ffffff;
+						}
+						&:nth-of-type(1){
+							.person_del{
+								i{
+									display: none;
+								}
+							}
+						}
+					}
+				}
+				.add_btn{
+					text-align: right;
+					margin-top: 1em;
+					padding-right: 2em;
+					button{
+						padding: 0 1em;
+						line-height: 2;
+						i{
+							margin-right: 0.5em;
+						}
+					}
+				}
+			}
+		}
+
+		&.payment{
+			.table{
+				.btn{
+					float: left;
+					width: calc((100% - 1em - 6px) / 3);
+					border: solid 1px #ffffff;
+					text-align: center;
+					line-height: 1.5;
+					label{
+						display: block;
+						width: 100%;
+						height: 100%;
+						@include transition-duration(0.5s);
+					}
+					input{
+						display: none;
+						&:checked{
+							&+label{
+								background: #ffffff;
+								color: #96b6a6;
+							}
+						}
+					}
+					&+.btn{
+						margin-left: 0.5em;
+					}
+				}
+			}
+		}
+
+		&.form_bottom{
+			margin-bottom: 2em;
+			.total{
+				float: left;
+				width: calc(100% - 8.5rem - 2px);
+				line-height: calculateRem(28px);
+				text-align: right;
+				padding-right: 1em;
+				background: #ffffff;
+				color: #96b6a6;
+			}
+			button{
+				float: left;
+				width: 7.5rem;
+				padding: 0;
+				line-height: calculateRem(24px);
+				cursor: pointer;
+				@include font-size(16px);
+				i{
+					&:before{
+						font-size: 0.8em;
+						line-height: calculateRem(24px);
+					}
+					margin-left: 0.5em;
+				}
+			}
+		}
+	}
+}
+
+.search_icon{
+    position: fixed;
+    z-index: 3;
+    right: -9rem;
+    top: 10%;
+    @include floatclear();
+    @include transition-duration(1s);
+    >i{
+    	float: left;
+	    width: calculateRem(32px);
+	    height: calculateRem(32px);
+	    background: #ffffff;
+	    color: #96b6a6;
+	    line-height: calculateRem(32px);
+	    border: solid 1px #ffffff;
+    }
+    form{
+    	position: relative;
+    	float: left;
+    	height: calculateRem(32px);
+    	@include floatclear();
+    	input{
+    		float: left;
+    		padding: 0 0.5em;
+    		width: 8rem;
+    		height: 100%;
+    		line-height: calculateRem(32px);
+    		background: #96b6a6;
+    		color: #ffffff;
+    		border: solid 1px #ffffff;
+    		@include appearance-none();
+    		@include font-size(14px);
+    		@include border-radius(0);
+    		@include placeholder(rgba(255, 255, 255, 0.6));
+    	}
+    	button{
+    		position: absolute;
+    		right: 0;
+    		top: 1px;
+    		color: #ffffff;
+    		width: calculateRem(32px);
+    		height: calculateRem(32px);
+    		line-height: calculateRem(32px);
+    		background: transparent;
+    		border: none;
+    		margin: 0;
+    		padding: 0;
+    		@include font-size(12px);
+    	}
+    }
+    &.hover{
+    	right: 0;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+	@import "index_pad";
+}

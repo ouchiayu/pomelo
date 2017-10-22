@@ -1,0 +1,244 @@
+// |=================================================
+// |	Reset
+// |=================================================
+	
+	input, select, button, textarea, option{
+		font-weight: 300;
+		outline: none;
+		background: transparent;
+		border: none;
+		border-radius: none;
+		border-radius: 0;
+		padding: 0;
+		margin: 0;
+		color: $font-color;
+		@include appearance-none();
+	}
+
+.field-group{
+	position: relative;
+	border-bottom: solid 1px $green;
+	&:before, &:after{
+		content: "";
+		width: 1px;
+		height: 0.25em;
+		display: block;
+		background: $green;
+		position: absolute;
+		bottom: 0;
+	}
+	&:before{
+		left: 0;
+	}
+	&:after{
+		right: 0;
+	}
+
+	input.field{
+		position: relative;
+		z-index: 2;
+		width: 100%;
+		color: $font-color;
+		padding: 0.25em 0.5em;
+		@include font-size(12px);
+		+.fieldname{
+			position: absolute;
+			z-index: 1;
+			bottom: 0.5em;
+			left: 0.5em;
+			@include font-size(12px);
+			@include transition(0.3s, all, linear, 0s);
+			&.on{
+				left: 0;
+				top: -1em;
+				bottom: auto;
+				transform-origin: 0 50%;
+				@include transform(scale(0.7));
+			}
+		}
+		&:focus{
+			+.fieldname{
+				left: 0;
+				top: -1em;
+				bottom: auto;
+				transform-origin: 0 50%;
+				@include transform(scale(0.7));
+			}
+		}
+	}
+
+	label.error{
+		text-align: left;
+		position: absolute;
+		display: block;
+		width: 100%;
+		top: 100%;
+		color: $red;
+		margin-top: 0.5em;
+		@include font-size(10px);
+	}
+	@include pcsize{
+		input.field{
+			@include font-size(14px);
+			+.fieldname{
+				@include font-size(14px);
+			}
+		}
+	}
+}
+
+.select-group{
+	position: relative;
+	width: 100%;
+	border: solid 1px $green;
+	position: relative;
+	select{
+		display: block;
+		position: relative;
+		z-index: 2;
+		width: 100%;
+		padding: 0.25em 2em 0.25em 0.5em;
+		line-height: 1.5;
+		@include font-size(12px);
+	}
+	&:before{
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 1;
+		border-left: solid 1px $green;
+		content: "▼";
+		color: $green;
+		width: calculateRem(18px);
+		height: 100%;
+		text-align: center;
+		font-size: 0.8em;
+		line-height: calculateRem(24px);
+	}
+	label.error{
+		text-align: left;
+		position: absolute;
+		display: block;
+		width: 100%;
+		top: 100%;
+		color: $red;
+		margin-top: 0.5em;
+		@include font-size(10px);
+	}
+	@include pcsize{
+		select{
+			@include font-size(14px);
+		}
+		&:before{
+			width: calculateRem(28px);
+			line-height: calculateRem(28px);
+		}
+	}
+}
+
+.radio-group{
+	.title{
+		transform-origin: 0 50%;
+		@include transform(scale(0.7));
+		@include font-size(12px);
+	}
+	.option{
+		position: relative;
+		input{
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			+label{
+				display: block;
+				width: 100%;
+				padding: 0.25em 0;
+				text-align: center;
+				font-weight: 300;
+				color: $gray;
+				border: solid 1px $gray;
+				opacity: 0.5;
+				cursor: pointer;
+				margin: 0;
+				@include font-size(12px);
+				&:hover{
+					opacity: 1;
+				}
+			}
+			&:checked{
+				+label{
+					color: $green;
+					border-color: $green;
+					opacity: 1;
+					@include transition(0.5s, all, linear, 0s);
+				}
+			}
+		}
+	}
+	@include pcsize{
+		.title{
+			@include font-size(14px);
+		}
+		.option{
+			input{
+				+label{
+					@include font-size(14px);
+				}
+			}
+		}
+	}
+}
+
+.textarea-group{
+	position: relative;
+	.title{
+		transform-origin: 0 50%;
+		@include transform(scale(0.7));
+		@include font-size(12px);
+	}
+	textarea{
+		padding: 0.25em 0.5em;
+		width: 100%;
+		height: calculateRem(48px);
+		border: solid 1px $green;
+		resize: none;
+		border-radius: 0;
+		@include font-size(12px);
+	}
+	label.error{
+		text-align: left;
+		position: absolute;
+		display: block;
+		width: 100%;
+		top: 100%;
+		color: $red;
+		margin-top: 0.5em;
+		@include font-size(10px);
+	}
+	@include pcsize{
+		.title{
+			@include font-size(14px);
+		}
+		textarea{
+			height: calculateRem(56px);
+			@include font-size(14px);
+		}
+	}
+}
+
+.btn{
+	width: 100%;
+	text-align: center;
+	padding: 0.25em 0;
+	border: solid 1px;
+	border-radius: 0;
+	&.btn-main{
+		color: $green;
+		border-color: $green;
+	}
+	&.btn-sub{
+		color: $gray;
+		border-color: $gray;
+		opacity: 0.5;
+	}
+}

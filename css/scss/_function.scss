@@ -1,0 +1,83 @@
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+@mixin transition-duration($sec) {
+    transition-duration: $sec;
+    -moz-transition-duration: $sec;
+    -webkit-transition-duration: $sec;
+    -o-transition-duration: $sec;
+}
+@mixin transition-delay($sec) {
+    transition-delay: $sec;
+    -moz-transition-delay: $sec;
+    -webkit-transition-delay: $sec;
+    -o-transition-delay: $sec;
+}
+@mixin transition-property($property) {
+    transition-property: $property;
+    -moz-transition-property: $property;
+    -webkit-transition-property: $property;
+    -o-transition-property: $property;
+}
+@mixin transform($property) {
+    transform: $property;
+    -moz-transform: $property;
+    -webkit-transform: $property;
+    -o-transform: $property;
+}
+@mixin appearance-none(){
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+@mixin vertical-align-middle(){
+    content: "";
+    width: 0;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+// 輸入框預設文字顏色
+@mixin placeholder($color){
+    &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: $color;
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+       color: $color;
+       opacity:  1;
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+       color: $color;
+       opacity:  1;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+       color: $color;
+    }
+    &:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+      color: $color;
+    }
+}
+// 正三角形
+@mixin bottom_triangle($width, $height, $color){
+    border-bottom: solid $height $color;
+    border-left: solid ($width/2) transparent;
+    border-right: solid ($width/2) transparent; 
+}
+// 取消float
+@mixin floatclear(){
+    &:after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
