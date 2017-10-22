@@ -5,38 +5,37 @@ if ($_SERVER['SERVER_NAME'] == 'pomelo.esy.es') {
 	$db_username = "u797195823_ohmo";
 	$db_password = "zo6gp65j";
 
-	$db_link = @mysqli_connect($db_host, $db_username, $db_password);
+	$db_link = @mysql_connect($db_host, $db_username, $db_password);
 
 	if (!$db_link) die("資料庫連接失敗");
 
-	mysqli_query("SET NAMES 'utf8'");
+	mysql_query("SET NAMES 'utf8'");
 
-	$seldb = @mysqli_selectdb("u797195823_pomel");
+	$seldb = @mysql_selectdb("u797195823_pomel");
 
 }elseif($_SERVER['SERVER_NAME'] == 'ec2-13-124-229-140.ap-northeast-2.compute.amazonaws.com'){
 	$db_host = "127.0.0.1";
 	$db_username = "root";
 	$db_password = "zo6gp65j";
-	$db_name = 'pomelo';
 
-	$db_link = mysqli_connect($db_host, $db_username, $db_password, $db_name);
+	$db_link = @mysql_connect($db_host, $db_username, $db_password);
 
-	if (!$db_link) die("資料庫連接失敗".mysqli_connect_error());
+	if (!$db_link) die("資料庫連接失敗");
 
-	mysqli_query("SET NAMES 'utf8'");
+	mysql_query("SET NAMES 'utf8'");
 
-	// $seldb = @mysqli_selectdb("pomelo");
+	$seldb = @mysql_selectdb("pomelo");
 }else{
 	$db_host = "127.0.0.1";
 	$db_username = "root";
 	$db_password = "root";
 
-	$db_link = @mysqli_connect($db_host, $db_username, $db_password);
+	$db_link = @mysql_connect($db_host, $db_username, $db_password);
 
 	if (!$db_link) die("資料庫連接失敗");
 
-	mysqli_query("SET NAMES 'utf8'");
+	mysql_query("SET NAMES 'utf8'");
 
-	$seldb = @mysqli_selectdb("pomelo");
+	$seldb = @mysql_selectdb("pomelo");
 }
  ?>

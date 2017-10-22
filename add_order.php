@@ -3,6 +3,7 @@ header("Content-Type: text/html; charset=utf-8");
 date_default_timezone_set("Asia/Taipei");
 include("connMysql.php");
 
+if (!$seldb) die("資料庫選擇失敗");
 
 $sql_query = "INSERT INTO `pomelo_order`(`order_time`, `a_name`, `a_phone`, `p_name`, `p_phone`, `p_num`, `p_address`, `p_msg`, `payment_type`, `payment_status`, `order_status`) VALUES";
 
@@ -39,8 +40,8 @@ foreach ($_POST["receiver"] as $receiver) {
 	$i++;
 }
 // echo $sql_query;
-$response = mysqli_query($sql_query);
-$order_id = mysqli_insert_id();
+$response = mysql_query($sql_query);
+$order_id = mysql_insert_id();
 
 // echo $order_id;
 
