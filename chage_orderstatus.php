@@ -2,7 +2,6 @@
 header("Content-Type: text/html; charset=utf-8");
 include("connMysql.php");
 
-if (!$seldb) die("資料庫選擇失敗");
 
 if (is_array($_POST["id"])) {
 	$id_array = $_POST["id"];

@@ -17,10 +17,11 @@ if ($_SERVER['SERVER_NAME'] == 'pomelo.esy.es') {
 	$db_host = "127.0.0.1";
 	$db_username = "root";
 	$db_password = "zo6gp65j";
+	$db_name = 'pomelo';
 
-	$db_link = @mysqli_connect($db_host, $db_username, $db_password, 'pomelo');
+	$db_link = mysqli_connect($db_host, $db_username, $db_password, $db_name);
 
-	if (!$db_link) die("資料庫連接失敗");
+	if (!$db_link) die("資料庫連接失敗".mysqli_connect_error());
 
 	mysqli_query("SET NAMES 'utf8'");
 

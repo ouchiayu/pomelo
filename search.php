@@ -2,7 +2,6 @@
 <?php 
 include("connMysql.php");
 
-if (!$seldb) die("資料庫選擇失敗");
 
 $sql_query = "SELECT * FROM `pomelo_order` WHERE `a_phone` = '".mysqli_real_escape_string($_GET["order"])."';";
 $order_response = mysqli_query($sql_query);

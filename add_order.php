@@ -3,7 +3,6 @@ header("Content-Type: text/html; charset=utf-8");
 date_default_timezone_set("Asia/Taipei");
 include("connMysql.php");
 
-if (!$seldb) die("資料庫選擇失敗");
 
 $sql_query = "INSERT INTO `pomelo_order`(`order_time`, `a_name`, `a_phone`, `p_name`, `p_phone`, `p_num`, `p_address`, `p_msg`, `payment_type`, `payment_status`, `order_status`) VALUES";
 
