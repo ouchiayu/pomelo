@@ -167,7 +167,7 @@
 					special: true
 				},
 				'address[5]': {
-					phoneNumber: true
+					special: true
 				},
 				'address[6]': {
 					phoneNumber: true
