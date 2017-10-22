@@ -7,9 +7,9 @@ include("../connMysql.php");
 if (!$seldb) die("資料庫選擇失敗");
 
 $sql_query = "SELECT * FROM `pomelo_order`;";
-$order_response = mysql_query($sql_query);
+$order_response = mysqli_query($sql_query);
 $orders = array();
-while ($orders[] = mysql_fetch_assoc($order_response));
+while ($orders[] = mysqli_fetch_assoc($order_response));
 unset($orders[count($orders)-1]);
 
 // 箱總數

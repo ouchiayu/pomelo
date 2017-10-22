@@ -40,8 +40,8 @@ foreach ($_POST["receiver"] as $receiver) {
 	$i++;
 }
 // echo $sql_query;
-$response = mysql_query($sql_query);
-$order_id = mysql_insert_id();
+$response = mysqli_query($sql_query);
+$order_id = mysqli_insert_id();
 
 // echo $order_id;
 

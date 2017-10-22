@@ -15,7 +15,7 @@ foreach ($id_array as $id) {
 	$sql_query .= "`order_status` = '".$_POST["status"]."'";
 	$sql_query .= "WHERE `order_id` = ".$id;
 
-	mysql_query($sql_query);
+	mysqli_query($sql_query);
 }
 
 echo true;

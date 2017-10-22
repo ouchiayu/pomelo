@@ -10,7 +10,7 @@ if (empty($_POST['cash_who'])) {
 	$sql_query .= "`cash_who` = '".$_POST['cash_who']."',";
 	$sql_query .= "`payment_status` = '1' ";	
 	$sql_query .= "WHERE `order_id` = '".$_GET['order']."';";
-	mysql_query($sql_query);
+	mysqli_query($sql_query);
 
 	echo "success";
 }

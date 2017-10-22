@@ -13,7 +13,7 @@ if (empty($_POST['atm_num']) || empty($_POST['atm_bank'])) {
 	$sql_query .= "`atm_bank` = '".$_POST['atm_bank']."',";
 	$sql_query .= "`payment_status` = '1' ";	
 	$sql_query .= "WHERE `order_id` = '".$_GET['order']."';";
-	mysql_query($sql_query);
+	mysqli_query($sql_query);
 
 	echo 'success';
 }
