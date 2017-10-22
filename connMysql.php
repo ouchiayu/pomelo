@@ -18,13 +18,13 @@ if ($_SERVER['SERVER_NAME'] == 'pomelo.esy.es') {
 	$db_username = "root";
 	$db_password = "zo6gp65j";
 
-	$db_link = @mysql_connect($db_host, $db_username, $db_password);
+	$db_link = @mysqli_connect($db_host, $db_username, $db_password, 'pomelo');
 
 	if (!$db_link) die("資料庫連接失敗");
 
 	mysql_query("SET NAMES 'utf8'");
 
-	$seldb = @mysql_selectdb("pomelo");
+	// $seldb = @mysql_selectdb("pomelo");
 }else{
 	$db_host = "127.0.0.1";
 	$db_username = "root";
