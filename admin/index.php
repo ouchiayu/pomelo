@@ -6,103 +6,189 @@ include("../connMysql.php");
 
 
 $sql_query = "SELECT * FROM `pomelo_order`;";
-$order_response = mysqli_query($sql_query);
+$order_response = mysql_query($sql_query);
 $orders = array();
-while ($orders[] = mysqli_fetch_assoc($order_response));
+while ($orders[] = mysql_fetch_assoc($order_response));
 unset($orders[count($orders)-1]);
 
 // 箱總數
-$box_total = 0;
+$box_total = array(
+	'order' => 0, 
+	'pack' => 0, 
+	'ship' => 0, 
+	'arrive' => 0 
+);
 
-// 資料依狀態分組
-foreach ($orders as $i => $value) {
-	$box_total += $value['p_num'];
+// 依訂單狀態分組
+foreach ($orders as $i => $order) {
+	// 再依訂購人分組
+	$data[$order['order_status']][$order['a_phone']]['a_name']   = $order['a_name'];
+	$data[$order['order_status']][$order['a_phone']]['a_phone']  = $order['a_phone'];
+	$data[$order['order_status']][$order['a_phone']]['orders'][] = $order;	
 
-	switch ($value["order_status"]) {
+	// 計算總數
+	$box_total[$order['order_status']] += $order['p_num'];
+}
+
+// 狀態中文標題
+function typeTittle($type){
+	switch ($type) {
 		case 'order':
-			$orders["order"][] = $value;
-			unset($orders[$i]);
+			return '訂單成立';
 			break;
 
 		case 'pack':
-			$orders["pack"][] = $value;
-			unset($orders[$i]);
+			return '阿婆裝箱中';
 			break;
 
 		case 'ship':
-			$orders["ship"][] = $value;
-			unset($orders[$i]);
+			return '運送中';
 			break;
 
 		case 'arrive':
-			$orders["arrive"][] = $value;
-			unset($orders[$i]);
+			return '貨物到達';
 			break;
 		
 		default:
+			return 'error-type';
 			break;
 	}
 }
 
+// echo json_encode($data);
+
+// 資料依狀態分組
+// foreach ($orders as $i => $value) {
+// 	$box_total += $value['p_num'];
+
+// 	switch ($value["order_status"]) {
+// 		case 'order':
+// 			$orders["order"][] = $value;
+// 			unset($orders[$i]);
+// 			break;
+
+// 		case 'pack':
+// 			$orders["pack"][] = $value;
+// 			unset($orders[$i]);
+// 			break;
+
+// 		case 'ship':
+// 			$orders["ship"][] = $value;
+// 			unset($orders[$i]);
+// 			break;
+
+// 		case 'arrive':
+// 			$orders["arrive"][] = $value;
+// 			unset($orders[$i]);
+// 			break;
+		
+// 		default:
+// 			break;
+// 	}
+// }
+
 // 資料組排序
-function cmp($a, $b){
-	if ($a == 'order') {
-		return -1;
-	}
-	if ($a == 'pack' && $b == 'order') {
-		return 1;
-	}else{
-		return -1;
-	}
-	if ($a == 'ship' && $b == 'arrive') {
-		return -1;
-	}else{
-		return 1;
-	}
-	if ($a == 'arrive') {
-		return 1;
-	}
-}
+// function cmp($a, $b){
+// 	if ($a == 'order') {
+// 		return -1;
+// 	}
+// 	if ($a == 'pack' && $b == 'order') {
+// 		return 1;
+// 	}else{
+// 		return -1;
+// 	}
+// 	if ($a == 'ship' && $b == 'arrive') {
+// 		return -1;
+// 	}else{
+// 		return 1;
+// 	}
+// 	if ($a == 'arrive') {
+// 		return 1;
+// 	}
+// }
 
-uksort($orders, "cmp");
+// uksort($orders, "cmp");
 
 
-foreach ($orders as $key => $value) {
+// foreach ($orders as $key => $value) {
 	// 組箱總數
-	$total[$key] = 0;
-	foreach ($value as $i => $person) {
-		$total[$key] += $person['p_num'];
+	// $total[$key] = 0;
+	// foreach ($value as $i => $person) {
+	// 	$total[$key] += $person['p_num'];
 
-		// 依訂購人群組
-		if (empty($data[$key][$person["p_phone"]])) {
-			$data[$key][$person["p_phone"]]['a_name']  = $person["a_name"];
-			$data[$key][$person["p_phone"]]['a_phone'] = $person["a_phone"];			
-		}else{
-			$address_array = explode("|", $person['p_address']);
-			$address_data = ['市', '區', '里/村', '路/街', '段', '巷', '弄', '號', '樓', '室'];
-			foreach ($address_data as $i => $value) {
-				$address[$value] = $address_array[$i];
-			}
-			$road = '';
-			foreach ($address as $word => $value) {
-				if ($value) {
-					if($word != '市' && $word != '區' && $word != '室'){
-						$road .= $value.$word;
-					}else{
-						$road .= $value;
-					}
-				}
-			}
+	// 	// 依訂購人群組
+	// 	if (empty($data[$key][$person["p_phone"]])) {
+	// 		$data[$key][$person["p_phone"]]['a_name']  = $person["a_name"];
+	// 		$data[$key][$person["p_phone"]]['a_phone'] = $person["a_phone"];			
+	// 	}else{
+	// 		$address_array = explode("|", $person['p_address']);
+	// 		$address_data = ['市', '區', '里/村', '路/街', '段', '巷', '弄', '號', '樓', '室'];
+	// 		foreach ($address_data as $i => $value) {
+	// 			$address[$value] = $address_array[$i];
+	// 		}
+	// 		$road = '';
+	// 		foreach ($address as $word => $value) {
+	// 			if ($value) {
+	// 				if($word != '市' && $word != '區' && $word != '室'){
+	// 					$road .= $value.$word;
+	// 				}else{
+	// 					$road .= $value;
+	// 				}
+	// 			}
+	// 		}
 
-			$person['p_address'] = $road;
+	// 		$person['p_address'] = $road;
 
-			$data[$key][$person["p_phone"]]['orders'][] = $person;
-		}
-	}
-}
+	// 		$data[$key][$person["p_phone"]]['orders'][] = $person;
+	// 	}
+	// }
+// }
 ?>
 
 <main>
+	<div class="max_width">
+		<div class="orders">
+			<!-- Nav tabs -->
+			<nav>
+				<ul>
+					<li onclick="animate_page('#order');" class="<?php if($box_total['order'] < 1) echo 'null'; ?>"><i class="icon-order"></i><span><?php echo $box_total['order']; ?></span></li>
+					<li onclick="animate_page('#pack');" class="<?php if($box_total['pack'] < 1) echo 'null'; ?>"><i class="icon-pack"><span><?php echo $box_total['pack']; ?></span></i></li>
+					<li onclick="animate_page('#ship');" class="<?php if($box_total['ship'] < 1) echo 'null'; ?>"><i class="icon-ship" ><span><?php echo $box_total['ship']; ?></span></i></li>
+					<li onclick="animate_page('#arrive');" class="<?php if($box_total['arrive'] < 1) echo 'null'; ?>"><i class="icon-arrive"><span><?php echo $box_total['arrive']; ?></span></i></li>
+				</ul>
+			</nav>
+			
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<?php foreach ($data as $type_code => $type): ?>
+					<article class="tab-pane" id="<?php echo $type_code; ?>">
+						<h1><?php echo typeTittle($type_code); ?></h1>
+
+						<?php foreach ($type as $buyer): ?>
+							<article class="buyer">
+								<div class="buyer_header">
+									<?php echo $buyer['a_name']; ?>
+									<a href="/search.php?order=<?php echo $buyer['a_phone']; ?>" target="_blank"><?php echo $buyer['a_phone']; ?></a>
+								</div>
+								<div class="buyer_main">
+									<?php foreach ($buyer['orders'] as $receiver): ?>
+										<article class="receiver">
+											<div class="receiver_header">
+												<div class="name"><?php echo $receiver['p_name']; ?></div>
+												<?php echo $receiver['p_phone']; ?>
+												<?php echo $receiver['p_address']; ?>
+											</div>
+										</article>
+									<?php endforeach ?>
+								</div>
+							</article>
+						<?php endforeach ?>
+					</article>
+				<?php endforeach ?>
+			</div>
+		</div>
+	</div>
+
 	<?php foreach ($data as $key => $type): ?>
 		<section id="<?php echo $key; ?>">
 			<?php switch ($key) {
@@ -140,7 +226,6 @@ foreach ($orders as $key => $value) {
 					<?php endif ?>
 				</div>
 				<?php if (!empty($type)): ?>
-					<?php echo json_encode($type); ?>
 					<?php foreach ($type as $order): ?>
 						<div class="persons">
 							<div class="publick_inf">
@@ -249,7 +334,7 @@ foreach ($orders as $key => $value) {
 	<?php endforeach ?>	
 </main>
 
-<nav>
+<!-- <nav>
 	<ul>
 		<li onclick="animate_page('#order');"><i class="icon-order"></i></li>
 		<li onclick="animate_page('#pack');"><i class="icon-pack"></i></li>
@@ -257,7 +342,7 @@ foreach ($orders as $key => $value) {
 		<li onclick="animate_page('#arrive');"><i class="icon-arrive"></i></li>
 	</ul>
 </nav>
-
+ -->
 <?php include 'footer.php'; ?>
 
 <script type="text/javascript">

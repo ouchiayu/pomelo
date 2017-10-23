@@ -11,6 +11,7 @@
 	<link rel="shortcut icon" href="/img/logo.ico">
 	<link rel="stylesheet" href="../css/reset.css">
 	<link rel="stylesheet" href="../css/jquery-ui.min.css">
+	<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../icon/fontcustom/fontcustom.css">
 	<link rel="stylesheet" href="../css/backend.css">
 

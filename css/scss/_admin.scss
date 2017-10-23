@@ -1,5 +1,76 @@
 main{
-	padding: 2.5% 5% 5%;
+	.max_width{
+		.orders{
+			padding: calculateRem(30px) 5%;
+			nav{
+				position: fixed;
+				right: calculateRem(15px);
+				top: calculateRem(15px);
+				li{
+					border: solid 1px $green;
+					width: calculateRem(30px);
+					height: calculateRem(80px);
+					padding: calculateRem(10px) 0;
+					text-align: center;
+					background: rgba($green, 0.8);
+					cursor: pointer;
+					color: #ffffff;
+					line-height: calculateRem(30px);
+					@include border-radius(calculateRem(15px));
+					@include transition(0.3s, all, linear, 0s);
+					+li{
+						margin-top: 0.5rem;
+					}
+					i, span{
+						display: block;
+						width: calculateRem(30px);
+						height: calculateRem(30px);
+						text-align: center;
+					}
+					&:hover{
+						background: rgba(255, 255, 255, 0.8);
+						color: $green;
+					}
+					&.null{
+						background: rgba($gray, 0.5);
+						border-color: rgba($gray, 0.5);
+						&:hover{
+							background: rgba($gray, 0.5);
+							color: white;
+						}
+					}
+				}
+			}
+
+			.tab-pane{
+				h1{
+					padding: 0.25em 0;
+					color: $green;
+					border: solid 1px $green;
+					text-align: center;
+					@include font-size(14px);
+				}
+
+				.buyer{
+					margin: 1em 0;
+					background: white;
+					box-shadow: 0 2px 4px 0 rgba(black, 0.1);
+					.buyer_header{
+						background: $green;
+						color: white;
+						padding: 1em;
+						@include font-size(14px);
+						a{
+							display: inline-block;
+							margin-left: 0.5em;
+							color: white;
+							@include font-size(12px);
+						}
+					}
+				}
+			}
+		}
+	}
 	section{
 		margin-top: calculateRem(30px);
 		h1{
@@ -182,33 +253,6 @@ main{
 	}
 }
 
-nav{
-	position: fixed;
-	right: 1rem;
-	top: calculateRem(15px);
-	li{
-		border: solid 1px #96b6a6;
-		width: calculateRem(30px);
-		height: calculateRem(30px);
-		text-align: center;
-		background: rgba(150, 182, 166, 0.8);
-		color: #ffffff;
-		cursor: pointer;
-		@include font-size(16px);
-		@include border-radius(50%);
-		@include transition-duration(0.5s);
-		i{
-			line-height: calculateRem(30px);
-		}
-		&+li{
-			margin-top: 0.5rem;
-		}
-		&:hover{
-			background: rgba(255, 255, 255, 0.8);
-			color: #96b6a6;
-		}
-	}
-}
 
 @media only screen and (max-width: 768px) {
 	@import "admin_pad";

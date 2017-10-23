@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 	<meta property="og:title" content="花蓮鶴岡紅柚預購單"></meta>
-	<meta property="og:image" content="http://ec2-54-69-99-160.us-west-2.compute.amazonaws.com/img/seo_pomelo.jpg"></meta>
+	<meta property="og:image" content="/img/seo_pomelo.jpg"></meta>
 	<meta property="og:description" content="紅柚預購，一箱二十斤，免運費，一千元"></meta>
 	<meta property="og:site_name" content="花蓮鶴岡紅柚預購單"></meta>
 
