@@ -13,7 +13,7 @@
 
 	<meta name="description" content="紅柚預購，一箱二十斤，免運費，一千元">
 	<meta name="title" content="花蓮鶴岡紅柚預購單">
-	<meta name="image" content="http://pomelo.esy.es/img/seo_pomelo.jpg">
+	<meta name="image" content="/img/seo_pomelo.jpg">
 
 	<title>花蓮鶴岡紅柚預購單</title>
 
