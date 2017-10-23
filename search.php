@@ -308,6 +308,10 @@ unset($order[count($order)-1]);
 
 <script type="text/javascript">
 $(function(){
+	<?php if (isset($_GET['success']) &&  $_GET['success']): ?>
+		alert("訂購成功");
+	<?php endif ?>
+
 	$("#atm_form").validate({
 		rules: {
 			atm_num: {
