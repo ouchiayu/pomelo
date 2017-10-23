@@ -1216,8 +1216,8 @@ main .max-width .orders {
                   color: #be4248; }
                 main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info .content button {
                   margin-top: 0.5em;
-                  color: #345f52;
-                  border: solid 1px #345f52;
+                  color: #be4248;
+                  border: solid 1px #be4248;
                   padding: 0.25em 0;
                   width: 100%; }
             main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_action {
