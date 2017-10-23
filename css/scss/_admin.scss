@@ -1,42 +1,48 @@
 main{
-	.max_width{
+	.max-width{
 		.orders{
 			padding: calculateRem(30px) 5%;
 			nav{
 				position: fixed;
 				right: calculateRem(15px);
 				top: calculateRem(15px);
-				li{
-					border: solid 1px $green;
+				li{					
 					width: calculateRem(30px);
 					height: calculateRem(80px);
 					padding: calculateRem(10px) 0;
 					text-align: center;
-					background: rgba($green, 0.8);
+					background: rgba($gray, 0.5);
+					border: solid 1px rgba($gray, 0.5);
 					cursor: pointer;
-					color: #ffffff;
 					line-height: calculateRem(30px);
 					@include border-radius(calculateRem(15px));
 					@include transition(0.3s, all, linear, 0s);
 					+li{
 						margin-top: 0.5rem;
 					}
-					i, span{
-						display: block;
-						width: calculateRem(30px);
-						height: calculateRem(30px);
-						text-align: center;
+					a{
+						color: white;
+						i, span{
+							display: block;
+							width: calculateRem(30px);
+							height: calculateRem(30px);
+							text-align: center;
+						}
 					}
 					&:hover{
-						background: rgba(255, 255, 255, 0.8);
-						color: $green;
+						background: rgba(255, 255, 255, 0.5);
+						a{
+							color: $green;							
+						}
 					}
-					&.null{
-						background: rgba($gray, 0.5);
-						border-color: rgba($gray, 0.5);
+					&.active{
+						border: solid 1px $green;
+						background: rgba($green, 0.8);
 						&:hover{
-							background: rgba($gray, 0.5);
-							color: white;
+							background: rgba(255, 255, 255, 0.5);
+							a{
+								color: $green;							
+							}
 						}
 					}
 				}
@@ -67,193 +73,232 @@ main{
 							@include font-size(12px);
 						}
 					}
+					.buyer_main{
+						.receiver{
+							+.receiver{
+								border-top: solid 1px $green;
+							}							
+							.receiver_header{
+								position: relative;
+								width: 100%;
+								border-bottom: solid 1px rgba($gray, .5);
+								.receiver_info{
+									width: 70%;
+									padding: 1em;
+									@include font-size(12px);
+									.name{
+										font-weight: bold;
+										margin-bottom: 0.25em;
+										@include font-size(14px);
+									}
+								}
+								.receiver_num{
+									position: absolute;
+									right: 0;
+									top: 0;
+									width: 30%;
+									height: 100%;
+									border-left: solid 1px rgba($gray, .5);
+									@include font-size(14px);
+									>div{
+										width: 100%;
+										height: 50%;
+										text-align: center;
+										vertical-align: middle;
+										&:before{
+											@include vertical-align-middle();
+										}
+										+div{
+											border-top: solid 1px rgba($gray, .5);
+										}
+									}
+								}
+							}
+							.receiver_main{
+								width: 100%;
+								.receiver_info{
+									padding: 1em;
+									padding-bottom: 0.5em;
+									@include font-size(12px);
+									.info{
+										@include floatclear();
+										+.info{
+											margin-top: 1em;
+										}
+										.title{
+											width: 4em;
+											float: left;
+											color: rgba($gray, .5);
+											transform-origin: 0 50%;
+											@include transform(scale(0.7));
+										}
+										.content{
+											width: calc(100% - 4em - 0.01px);
+											float: right;
+											.gray{
+												color: $gray;
+											}
+											.green{
+												color: $green;
+											}
+											.red{
+												color: $red;
+											}
+											button{
+												margin-top: 0.5em;
+												color: $green;
+												border: solid 1px $green;
+												padding: 0.25em 0;
+												width: 100%;
+											}
+										}
+									}
+								}
+								.receiver_action{
+									padding: 1em;
+									padding-top: 0.5em;
+									button{
+										display: block;
+										width: 100%;
+										padding: 0.25em 0;
+										text-align: center;
+										vertical-align: middle;
+										color: $green;
+										border: solid 1px $green;
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 	}
-	section{
-		margin-top: calculateRem(30px);
-		h1{
-			width: 7em;
-			font-weight: normal;
-			text-align: center;
-			line-height: 2;
-			color: #ffffff;
-			background: #96b6a6;
-			@include font-size(14px);
-		}
-		.order_list{
-			margin-top: calculateRem(30px);
-			@include font-size(12px);
-			.title{
-				line-height: 2.5;
-				border-bottom: solid 1px #96b6a6;
-				font-weight: bold;
-				@include floatclear();
-				div{
-					float: left;
-					padding: 0 0.5em;
-					&:nth-of-type(1){
-						width: calc(14% - 1em);	
-					}
-					&:nth-of-type(2){
-						width: calc(14% - 1em);	
-					}
-					&:nth-of-type(3){
-						width: calc(6% - 1em); 
-						text-align: right;	
-					}
-					&:nth-of-type(4){
-						width: calc(16% - 1em);	
-					}
-					&:nth-of-type(5){
-						width: calc(4% - 1em);
-						text-align: center;	
-					}
-					&:nth-of-type(6){
-						width: calc(24% - 1em);	
-					}
-					&:nth-of-type(7){
-						width: calc(12% - 1em);	
-					}
-					&:nth-of-type(8){
-						width: calc(7% - 1em);
-						text-align: center;
-						opacity: 0;
-					}
-					&:nth-of-type(9){
-						width: calc(3% - 1em);
-						text-align: center;
+
+	@include pcsize{
+		.max-width{
+			.orders{
+				padding: calculateRem(30px) 10%;
+				nav{
+					li{					
+						width: auto;
+						height: calculateRem(30px);
+						padding: 0 calculateRem(10px);
+						+li{
+							margin-top: 0.5rem;
+						}
+						a{
+							display: block;
+							@include floatclear();
+							i, span{
+								float: left;
+							}
+						}
 					}
 				}
-			}
-			.persons{
-				border-bottom: solid 1px rgba(150, 182, 166, 0.2);
-				@include floatclear();
-				.publick_inf{
-					float: left;
-					width: 50%;
-					@include floatclear();
-					div{
-						float: left;
-						padding: 0.5em;
-						line-height: 1.5;
-						&:nth-of-type(1){
-							width: calc(28% - 1em);
-							color: rgba(150, 182, 166, 0.5);
+
+				.tab-pane{
+					h1{
+						@include font-size(16px);
+					}
+
+					.buyer{
+						position: relative;
+						.buyer_header{
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 20%;
+							height: 100%;
+							@include font-size(16px);
 							a{
-								color: #96b6a6;
+								display: block;
+								margin-left: 0;
+								margin-top: 0.5em;
+								@include font-size(14px);
 							}
 						}
-						&:nth-of-type(2){
-							width: calc(28% - 1em);	
-						}
-						&:nth-of-type(3){
-							width: calc(12% - 1em); 
-							text-align: right;	
-						}
-						&:nth-of-type(4){
-							width: calc(32% - 1em);
-							button{
-								width: 5em;
-								margin-top: 0.25em;
-								border: solid 1px #96b6a6;
-								color: #96b6a6;
-								background: #ffffff;
-								line-height: 1.5;
-								@include border-radius(0);
-							}
-						}
-					}
-				}
-				.person_inf{
-					float: left;
-					width: 50%;
-					.person{
-						div{
-							display: inline-block;
-							vertical-align: middle;
-							padding: 0.5em;
-							line-height: 1.5;
-							&:nth-of-type(1){
-								width: calc(8% - 1em);
-								text-align: center;
-							}
-							&:nth-of-type(2){
-								width: calc(48% - 1em);	
-							}
-							&:nth-of-type(3){
-								width: calc(24% - 1em);	
-							}
-							&:nth-of-type(4){
-								width: calc(14% - 1em);
-								text-align: center;
-								button{
-									width: 4em;
-									margin-top: 0.25em;
-									border: solid 1px #96b6a6;
-									color: #96b6a6;
-									background: #ffffff;
-									line-height: 1.5;
-									@include border-radius(0);
-								}
-							}
-							&:nth-of-type(5){
-								width: calc(6% - 1em);
-								text-align: center;
-								input{
-									display: none;
-									&+label{
-										.icon-checkbox{
-											display: block;
-											&+.icon-check{
-												display: none;
-											}
+						.buyer_main{
+							width: 80%;
+							margin-left: 20%;
+							.receiver{
+								position: relative;
+								.receiver_header{
+									position: absolute;
+									top: 0;
+									left: 0;
+									width: 50%;
+									height: 100%;
+									border-bottom: none;
+									.receiver_info{
+										.name{
 										}
 									}
-									&:checked{
-										&+label{
-											.icon-checkbox{
-												display: none;
-												&+.icon-check{
-													display: block;
+									.receiver_num{
+										border-right: solid 1px rgba($gray, .5);
+									}
+								}
+								.receiver_main{
+									margin-left: 50%;
+									width: 50%;
+									.receiver_info{
+										padding: 1em;
+										padding-bottom: 0.5em;
+										@include font-size(12px);
+										.info{
+											@include floatclear();
+											+.info{
+												margin-top: 1em;
+											}
+											.title{
+												width: 4em;
+												float: left;
+												color: rgba($gray, .5);
+												transform-origin: 0 50%;
+												@include transform(scale(0.7));
+											}
+											.content{
+												width: calc(100% - 4em - 0.01px);
+												float: right;
+												.gray{
+													color: $gray;
+												}
+												.green{
+													color: $green;
+												}
+												.red{
+													color: $red;
+												}
+												button{
+													margin-top: 0.5em;
+													color: $green;
+													border: solid 1px $green;
+													padding: 0.25em 0;
+													width: 100%;
 												}
 											}
 										}
 									}
+									.receiver_action{
+										padding: 1em;
+										padding-top: 0.5em;
+										button{
+											display: block;
+											width: 100%;
+											padding: 0.25em 0;
+											text-align: center;
+											vertical-align: middle;
+											color: $green;
+											border: solid 1px $green;
+										}
+									}
 								}
 							}
-						}
-						&+.person{
-							border-top: dashed 1px rgba(150, 182, 166, 0.5);
 						}
 					}
 				}
 			}
-			.total{
-				margin-top: 0.5em;
-				text-align: right;
-				line-height: 2;
-				span{
-					@include font-size(16px);
-				}
-				button{
-					width: 4em;
-					border: solid 1px #96b6a6;
-					background: #ffffff;
-					color: #96b6a6;
-					margin-left: 1em;
-					line-height: 1.5;
-				}
-			}
 		}
-		&+section{
-			margin-top: calculateRem(60px);
-		}
+
 	}
-}
-
-
-@media only screen and (max-width: 768px) {
-	@import "admin_pad";
 }

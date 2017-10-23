@@ -979,21 +979,20 @@ input, select, button, textarea, option {
     border-color: #9b9b9b;
     opacity: 0.5; }
 
-main .max_width .orders {
+main .max-width .orders {
   padding: 1.875rem 5%; }
-  main .max_width .orders nav {
+  main .max-width .orders nav {
     position: fixed;
     right: 0.9375rem;
     top: 0.9375rem; }
-    main .max_width .orders nav li {
-      border: solid 1px #345f52;
+    main .max-width .orders nav li {
       width: 1.875rem;
       height: 5rem;
       padding: 0.625rem 0;
       text-align: center;
-      background: rgba(52, 95, 82, 0.8);
+      background: rgba(155, 155, 155, 0.5);
+      border: solid 1px rgba(155, 155, 155, 0.5);
       cursor: pointer;
-      color: #ffffff;
       line-height: 1.875rem;
       -webkit-border-radius: 0.9375rem;
       -moz-border-radius: 0.9375rem;
@@ -1002,267 +1001,235 @@ main .max_width .orders {
       -moz-transition: 0.3s all linear 0s;
       -webkit-transition: 0.3s all linear 0s;
       -o-transition: 0.3s all linear 0s; }
-      main .max_width .orders nav li + li {
+      main .max-width .orders nav li + li {
         margin-top: 0.5rem; }
-      main .max_width .orders nav li i, main .max_width .orders nav li span {
-        display: block;
-        width: 1.875rem;
-        height: 1.875rem;
-        text-align: center; }
-      main .max_width .orders nav li:hover {
-        background: rgba(255, 255, 255, 0.8);
-        color: #345f52; }
-      main .max_width .orders nav li.null {
-        background: rgba(155, 155, 155, 0.5);
-        border-color: rgba(155, 155, 155, 0.5); }
-        main .max_width .orders nav li.null:hover {
-          background: rgba(155, 155, 155, 0.5);
-          color: white; }
-  main .max_width .orders .tab-pane h1 {
+      main .max-width .orders nav li a {
+        color: white; }
+        main .max-width .orders nav li a i, main .max-width .orders nav li a span {
+          display: block;
+          width: 1.875rem;
+          height: 1.875rem;
+          text-align: center; }
+      main .max-width .orders nav li:hover {
+        background: rgba(255, 255, 255, 0.5); }
+        main .max-width .orders nav li:hover a {
+          color: #345f52; }
+      main .max-width .orders nav li.active {
+        border: solid 1px #345f52;
+        background: rgba(52, 95, 82, 0.8); }
+        main .max-width .orders nav li.active:hover {
+          background: rgba(255, 255, 255, 0.5); }
+          main .max-width .orders nav li.active:hover a {
+            color: #345f52; }
+  main .max-width .orders .tab-pane h1 {
     padding: 0.25em 0;
     color: #345f52;
     border: solid 1px #345f52;
     text-align: center;
     font-size: 14px;
     font-size: 0.875rem; }
-  main .max_width .orders .tab-pane .buyer {
+  main .max-width .orders .tab-pane .buyer {
     margin: 1em 0;
     background: white;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1); }
-    main .max_width .orders .tab-pane .buyer .buyer_header {
+    main .max-width .orders .tab-pane .buyer .buyer_header {
       background: #345f52;
       color: white;
       padding: 1em;
       font-size: 14px;
       font-size: 0.875rem; }
-      main .max_width .orders .tab-pane .buyer .buyer_header a {
+      main .max-width .orders .tab-pane .buyer .buyer_header a {
         display: inline-block;
         margin-left: 0.5em;
         color: white;
         font-size: 12px;
         font-size: 0.75rem; }
-main section {
-  margin-top: 1.875rem; }
-  main section h1 {
-    width: 7em;
-    font-weight: normal;
-    text-align: center;
-    line-height: 2;
-    color: #ffffff;
-    background: #96b6a6;
-    font-size: 14px;
-    font-size: 0.875rem; }
-  main section .order_list {
-    margin-top: 1.875rem;
-    font-size: 12px;
-    font-size: 0.75rem; }
-    main section .order_list .title {
-      line-height: 2.5;
-      border-bottom: solid 1px #96b6a6;
-      font-weight: bold; }
-      main section .order_list .title:after {
-        content: "";
-        display: block;
-        clear: both; }
-      main section .order_list .title div {
-        float: left;
-        padding: 0 0.5em; }
-        main section .order_list .title div:nth-of-type(1) {
-          width: calc(14% - 1em); }
-        main section .order_list .title div:nth-of-type(2) {
-          width: calc(14% - 1em); }
-        main section .order_list .title div:nth-of-type(3) {
-          width: calc(6% - 1em);
-          text-align: right; }
-        main section .order_list .title div:nth-of-type(4) {
-          width: calc(16% - 1em); }
-        main section .order_list .title div:nth-of-type(5) {
-          width: calc(4% - 1em);
-          text-align: center; }
-        main section .order_list .title div:nth-of-type(6) {
-          width: calc(24% - 1em); }
-        main section .order_list .title div:nth-of-type(7) {
-          width: calc(12% - 1em); }
-        main section .order_list .title div:nth-of-type(8) {
-          width: calc(7% - 1em);
+    main .max-width .orders .tab-pane .buyer .buyer_main .receiver + .receiver {
+      border-top: solid 1px #345f52; }
+    main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_header {
+      position: relative;
+      width: 100%;
+      border-bottom: solid 1px rgba(155, 155, 155, 0.5); }
+      main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_header .receiver_info {
+        width: 70%;
+        padding: 1em;
+        font-size: 12px;
+        font-size: 0.75rem; }
+        main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_header .receiver_info .name {
+          font-weight: bold;
+          margin-bottom: 0.25em;
+          font-size: 14px;
+          font-size: 0.875rem; }
+      main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_header .receiver_num {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 30%;
+        height: 100%;
+        border-left: solid 1px rgba(155, 155, 155, 0.5);
+        font-size: 14px;
+        font-size: 0.875rem; }
+        main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_header .receiver_num > div {
+          width: 100%;
+          height: 50%;
           text-align: center;
-          opacity: 0; }
-        main section .order_list .title div:nth-of-type(9) {
-          width: calc(3% - 1em);
-          text-align: center; }
-    main section .order_list .persons {
-      border-bottom: solid 1px rgba(150, 182, 166, 0.2); }
-      main section .order_list .persons:after {
-        content: "";
-        display: block;
-        clear: both; }
-      main section .order_list .persons .publick_inf {
-        float: left;
-        width: 50%; }
-        main section .order_list .persons .publick_inf:after {
+          vertical-align: middle; }
+          main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_header .receiver_num > div:before {
+            content: "";
+            width: 0;
+            height: 100%;
+            display: inline-block;
+            vertical-align: middle; }
+          main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_header .receiver_num > div + div {
+            border-top: solid 1px rgba(155, 155, 155, 0.5); }
+    main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main {
+      width: 100%; }
+      main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info {
+        padding: 1em;
+        padding-bottom: 0.5em;
+        font-size: 12px;
+        font-size: 0.75rem; }
+        main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info:after {
           content: "";
           display: block;
           clear: both; }
-        main section .order_list .persons .publick_inf div {
+        main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info + .info {
+          margin-top: 1em; }
+        main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info .title {
+          width: 4em;
           float: left;
-          padding: 0.5em;
-          line-height: 1.5; }
-          main section .order_list .persons .publick_inf div:nth-of-type(1) {
-            width: calc(28% - 1em);
-            color: rgba(150, 182, 166, 0.5); }
-            main section .order_list .persons .publick_inf div:nth-of-type(1) a {
-              color: #96b6a6; }
-          main section .order_list .persons .publick_inf div:nth-of-type(2) {
-            width: calc(28% - 1em); }
-          main section .order_list .persons .publick_inf div:nth-of-type(3) {
-            width: calc(12% - 1em);
-            text-align: right; }
-          main section .order_list .persons .publick_inf div:nth-of-type(4) {
-            width: calc(32% - 1em); }
-            main section .order_list .persons .publick_inf div:nth-of-type(4) button {
-              width: 5em;
-              margin-top: 0.25em;
-              border: solid 1px #96b6a6;
-              color: #96b6a6;
-              background: #ffffff;
-              line-height: 1.5;
-              -webkit-border-radius: 0;
-              -moz-border-radius: 0;
-              border-radius: 0; }
-      main section .order_list .persons .person_inf {
-        float: left;
-        width: 50%; }
-        main section .order_list .persons .person_inf .person div {
-          display: inline-block;
+          color: rgba(155, 155, 155, 0.5);
+          transform-origin: 0 50%;
+          -webkit-transform: scale(0.7);
+          -moz-transform: scale(0.7);
+          -ms-transform: scale(0.7);
+          -o-transform: scale(0.7);
+          transform: scale(0.7); }
+        main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info .content {
+          width: calc(100% - 4em - 0.01px);
+          float: right; }
+          main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info .content .gray {
+            color: #9b9b9b; }
+          main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info .content .green {
+            color: #345f52; }
+          main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info .content .red {
+            color: #be4248; }
+          main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info .content button {
+            margin-top: 0.5em;
+            color: #345f52;
+            border: solid 1px #345f52;
+            padding: 0.25em 0;
+            width: 100%; }
+      main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_action {
+        padding: 1em;
+        padding-top: 0.5em; }
+        main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_action button {
+          display: block;
+          width: 100%;
+          padding: 0.25em 0;
+          text-align: center;
           vertical-align: middle;
-          padding: 0.5em;
-          line-height: 1.5; }
-          main section .order_list .persons .person_inf .person div:nth-of-type(1) {
-            width: calc(8% - 1em);
-            text-align: center; }
-          main section .order_list .persons .person_inf .person div:nth-of-type(2) {
-            width: calc(48% - 1em); }
-          main section .order_list .persons .person_inf .person div:nth-of-type(3) {
-            width: calc(24% - 1em); }
-          main section .order_list .persons .person_inf .person div:nth-of-type(4) {
-            width: calc(14% - 1em);
-            text-align: center; }
-            main section .order_list .persons .person_inf .person div:nth-of-type(4) button {
-              width: 4em;
-              margin-top: 0.25em;
-              border: solid 1px #96b6a6;
-              color: #96b6a6;
-              background: #ffffff;
-              line-height: 1.5;
-              -webkit-border-radius: 0;
-              -moz-border-radius: 0;
-              border-radius: 0; }
-          main section .order_list .persons .person_inf .person div:nth-of-type(5) {
-            width: calc(6% - 1em);
-            text-align: center; }
-            main section .order_list .persons .person_inf .person div:nth-of-type(5) input {
-              display: none; }
-              main section .order_list .persons .person_inf .person div:nth-of-type(5) input + label .icon-checkbox {
-                display: block; }
-                main section .order_list .persons .person_inf .person div:nth-of-type(5) input + label .icon-checkbox + .icon-check {
-                  display: none; }
-              main section .order_list .persons .person_inf .person div:nth-of-type(5) input:checked + label .icon-checkbox {
-                display: none; }
-                main section .order_list .persons .person_inf .person div:nth-of-type(5) input:checked + label .icon-checkbox + .icon-check {
-                  display: block; }
-        main section .order_list .persons .person_inf .person + .person {
-          border-top: dashed 1px rgba(150, 182, 166, 0.5); }
-    main section .order_list .total {
-      margin-top: 0.5em;
-      text-align: right;
-      line-height: 2; }
-      main section .order_list .total span {
+          color: #345f52;
+          border: solid 1px #345f52; }
+@media only screen and (min-width: 769px) {
+  main .max-width .orders {
+    padding: 1.875rem 10%; }
+    main .max-width .orders nav li {
+      width: auto;
+      height: 1.875rem;
+      padding: 0 0.625rem; }
+      main .max-width .orders nav li + li {
+        margin-top: 0.5rem; }
+      main .max-width .orders nav li a {
+        display: block; }
+        main .max-width .orders nav li a:after {
+          content: "";
+          display: block;
+          clear: both; }
+        main .max-width .orders nav li a i, main .max-width .orders nav li a span {
+          float: left; }
+    main .max-width .orders .tab-pane h1 {
+      font-size: 16px;
+      font-size: 1rem; }
+    main .max-width .orders .tab-pane .buyer {
+      position: relative; }
+      main .max-width .orders .tab-pane .buyer .buyer_header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20%;
+        height: 100%;
         font-size: 16px;
         font-size: 1rem; }
-      main section .order_list .total button {
-        width: 4em;
-        border: solid 1px #96b6a6;
-        background: #ffffff;
-        color: #96b6a6;
-        margin-left: 1em;
-        line-height: 1.5; }
-  main section + section {
-    margin-top: 3.75rem; }
-
-@media only screen and (max-width: 768px) {
-  body {
-    min-width: 0; }
-
-  main section h1 {
-    margin: auto; }
-  main section .order_list .title {
-    display: none; }
-  main section .order_list .persons {
-    border: solid 1px rgba(150, 182, 166, 0.2); }
-    main section .order_list .persons .publick_inf {
-      float: none;
-      width: calc(100% - 1em); }
-      main section .order_list .persons .publick_inf div {
-        float: none; }
-        main section .order_list .persons .publick_inf div:before {
-          display: inline-block;
-          width: 5em;
-          color: #96b6a6;
-          font-weight: bold; }
-        main section .order_list .persons .publick_inf div:nth-of-type(1) {
-          width: 100%; }
-          main section .order_list .persons .publick_inf div:nth-of-type(1):before {
-            content: "訂單編號"; }
-          main section .order_list .persons .publick_inf div:nth-of-type(1) a {
-            margin-left: 5em; }
-        main section .order_list .persons .publick_inf div:nth-of-type(2) {
-          width: 100%; }
-          main section .order_list .persons .publick_inf div:nth-of-type(2):before {
-            content: "訂購人"; }
-        main section .order_list .persons .publick_inf div:nth-of-type(3) {
-          width: 100%;
-          text-align: left; }
-          main section .order_list .persons .publick_inf div:nth-of-type(3):before {
-            content: "金額"; }
-        main section .order_list .persons .publick_inf div:nth-of-type(4) {
-          width: 100%; }
-          main section .order_list .persons .publick_inf div:nth-of-type(4):before {
-            content: "付款方式"; }
-    main section .order_list .persons .person_inf {
-      float: none;
-      width: 90%;
-      margin: auto; }
-      main section .order_list .persons .person_inf .person {
-        position: relative;
-        border-top: dashed 1px rgba(150, 182, 166, 0.5); }
-        main section .order_list .persons .person_inf .person div {
-          display: block; }
-          main section .order_list .persons .person_inf .person div:before {
-            display: inline-block;
-            width: 4em;
-            color: #96b6a6;
-            font-weight: bold; }
-          main section .order_list .persons .person_inf .person div:nth-of-type(1) {
-            width: calc(100% - 1em);
-            text-align: left; }
-            main section .order_list .persons .person_inf .person div:nth-of-type(1):after {
-              content: " 箱"; }
-          main section .order_list .persons .person_inf .person div:nth-of-type(2) {
-            width: calc(100% - 1em); }
-            main section .order_list .persons .person_inf .person div:nth-of-type(2):before {
-              content: "收件人"; }
-          main section .order_list .persons .person_inf .person div:nth-of-type(3) {
-            width: calc(100% - 1em); }
-            main section .order_list .persons .person_inf .person div:nth-of-type(3):before {
-              content: "備註"; }
-          main section .order_list .persons .person_inf .person div:nth-of-type(4) {
+        main .max-width .orders .tab-pane .buyer .buyer_header a {
+          display: block;
+          margin-left: 0;
+          margin-top: 0.5em;
+          font-size: 14px;
+          font-size: 0.875rem; }
+      main .max-width .orders .tab-pane .buyer .buyer_main {
+        width: 80%;
+        margin-left: 20%; }
+        main .max-width .orders .tab-pane .buyer .buyer_main .receiver {
+          position: relative; }
+          main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_header {
             position: absolute;
-            width: auto;
-            right: 0;
-            top: 0; }
-          main section .order_list .persons .person_inf .person div:nth-of-type(5) {
-            display: none; }
-    main section .order_list .persons + .persons {
-      margin-top: 1em; } }
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            border-bottom: none; }
+            main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_header .receiver_num {
+              border-right: solid 1px rgba(155, 155, 155, 0.5); }
+          main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main {
+            margin-left: 50%;
+            width: 50%; }
+            main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info {
+              padding: 1em;
+              padding-bottom: 0.5em;
+              font-size: 12px;
+              font-size: 0.75rem; }
+              main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info:after {
+                content: "";
+                display: block;
+                clear: both; }
+              main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info + .info {
+                margin-top: 1em; }
+              main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info .title {
+                width: 4em;
+                float: left;
+                color: rgba(155, 155, 155, 0.5);
+                transform-origin: 0 50%;
+                -webkit-transform: scale(0.7);
+                -moz-transform: scale(0.7);
+                -ms-transform: scale(0.7);
+                -o-transform: scale(0.7);
+                transform: scale(0.7); }
+              main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info .content {
+                width: calc(100% - 4em - 0.01px);
+                float: right; }
+                main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info .content .gray {
+                  color: #9b9b9b; }
+                main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info .content .green {
+                  color: #345f52; }
+                main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info .content .red {
+                  color: #be4248; }
+                main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_info .info .content button {
+                  margin-top: 0.5em;
+                  color: #345f52;
+                  border: solid 1px #345f52;
+                  padding: 0.25em 0;
+                  width: 100%; }
+            main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_action {
+              padding: 1em;
+              padding-top: 0.5em; }
+              main .max-width .orders .tab-pane .buyer .buyer_main .receiver .receiver_main .receiver_action button {
+                display: block;
+                width: 100%;
+                padding: 0.25em 0;
+                text-align: center;
+                vertical-align: middle;
+                color: #345f52;
+                border: solid 1px #345f52; } }
 
 /*# sourceMappingURL=backend.css.map */

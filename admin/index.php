@@ -55,6 +55,69 @@ function typeTittle($type){
 	}
 }
 
+// 付款資訊
+function getPaymentData($type, $status){
+	switch ($type) {
+		case 'cod':
+			return '貨到付款';
+			break;
+		
+		case 'atm':
+			return '匯款 '.getPaymentStatus($status);
+			break;
+
+		case 'cash':
+			return '現金付款 '.getPaymentStatus($status);
+			break;
+
+		default:
+			return 'error-type';
+			break;
+	}
+}
+
+// 付款狀態
+function getPaymentStatus($status){
+	switch ($status) {
+		case '0':
+			return '<span class="gray">(未付款)</span>';
+			break;
+		
+		case '1':
+			return '<span class="red">(等待確認)</span>';
+			break;
+
+		case '2':
+			return '<span class="green">(已付款)</span>';
+			break;
+
+		default:
+			return '';
+			break;
+	}
+}
+
+// 日期資料
+function getAddress($data){
+	$address_array = explode("|", $data);
+	$address_data = ['市', '區', '里/村', '路/街', '段', '巷', '弄', '號', '樓', '室'];
+	foreach ($address_data as $i => $value) {
+		$address[$value] = $address_array[$i];
+	}
+	$road = '';
+	foreach ($address as $word => $value) {
+		if ($value) {
+			if($word != '市' && $word != '區' && $word != '室'){
+				$road .= $value.$word;
+			}else{
+				$road .= $value;
+			}
+		}
+	}
+
+	return $road;
+}
+
 // echo json_encode($data);
 
 // 資料依狀態分組
@@ -146,22 +209,38 @@ function typeTittle($type){
 ?>
 
 <main>
-	<div class="max_width">
+	<div class="max-width">
 		<div class="orders">
 			<!-- Nav tabs -->
 			<nav>
-				<ul>
-					<li onclick="animate_page('#order');" class="<?php if($box_total['order'] < 1) echo 'null'; ?>"><i class="icon-order"></i><span><?php echo $box_total['order']; ?></span></li>
-					<li onclick="animate_page('#pack');" class="<?php if($box_total['pack'] < 1) echo 'null'; ?>"><i class="icon-pack"><span><?php echo $box_total['pack']; ?></span></i></li>
-					<li onclick="animate_page('#ship');" class="<?php if($box_total['ship'] < 1) echo 'null'; ?>"><i class="icon-ship" ><span><?php echo $box_total['ship']; ?></span></i></li>
-					<li onclick="animate_page('#arrive');" class="<?php if($box_total['arrive'] < 1) echo 'null'; ?>"><i class="icon-arrive"><span><?php echo $box_total['arrive']; ?></span></i></li>
+				<ul role="tablist">
+					<li class="active" role="presentation">
+						<a href="#order" aria-controls="order" role="tab" data-toggle="tab">
+							<i class="icon-order"></i><span><?php echo $box_total['order']; ?></span>
+						</a>
+					</li>
+					<li class="" role="presentation">
+						<a href="#pack" aria-controls="pack" role="tab" data-toggle="tab">
+							<i class="icon-pack"></i><span><?php echo $box_total['pack']; ?></span>
+						</a>
+					</li>
+					<li class="" role="presentation">
+						<a href="#ship" aria-controls="ship" role="tab" data-toggle="tab">
+							<i class="icon-ship" ></i><span><?php echo $box_total['ship']; ?></span>
+						</a>
+					</li>
+					<li class="" role="presentation">
+						<a href="#arrive" aria-controls="arrive" role="tab" data-toggle="tab">
+							<i class="icon-arrive"></i><span><?php echo $box_total['arrive']; ?></span>
+						</a>
+					</li>
 				</ul>
 			</nav>
 			
 			<!-- Tab panes -->
 			<div class="tab-content">
 				<?php foreach ($data as $type_code => $type): ?>
-					<article class="tab-pane" id="<?php echo $type_code; ?>">
+					<article role="tabpanel" class="tab-pane <?php if($type_code == 'order') echo 'active'; ?>" id="<?php echo $type_code; ?>">
 						<h1><?php echo typeTittle($type_code); ?></h1>
 
 						<?php foreach ($type as $buyer): ?>
@@ -173,11 +252,48 @@ function typeTittle($type){
 								<div class="buyer_main">
 									<?php foreach ($buyer['orders'] as $receiver): ?>
 										<article class="receiver">
-											<div class="receiver_header">
-												<div class="name"><?php echo $receiver['p_name']; ?></div>
-												<?php echo $receiver['p_phone']; ?>
-												<?php echo $receiver['p_address']; ?>
-											</div>
+											<form action="" method="" accept-charset="utf-8">
+												<div class="receiver_header">
+													<div class="receiver_info">
+														<div class="name"><?php echo $receiver['p_name']; ?></div>
+														<?php echo $receiver['p_phone']; ?><br>
+														<?php echo getAddress($receiver['p_address']); ?>
+													</div>
+													<div class="receiver_num">
+														<div class="qty"><?php echo $receiver['p_num']; ?> <sub>箱</sub></div>
+														<div class="price"><sub>$</sub> <?php echo number_format($receiver['p_num'] * 1000); ?></div>
+													</div>
+												</div>
+												<div class="receiver_main">
+													<div class="receiver_info">
+														<div class="info">
+															<div class="title">付款方式</div>
+															<div class="content <?php echo $receiver['payment_type']; ?>">
+																<?php echo getPaymentData($receiver['payment_type'], $receiver['payment_status']); ?>
+																<?php if ($receiver['payment_type'] != 'cod' && $receiver['payment_status'] != '0'): ?>
+																	<br>
+																	<?php if ($receiver['payment_type'] == 'atm'): ?>
+																		<span class="gray">銀行代碼：</span><?php echo $receiver['atm_bank']; ?><br>
+																		<span class="gray">帳號後五碼：</span><?php echo $receiver['atm_num']; ?>
+																	<?php else: ?>
+																		<span class="gray">收款人：<?php echo $receiver['cash_who']; ?></span>
+																	<?php endif ?>
+																	<?php if ($receiver['payment_status'] == '1'): ?>
+																		<button class="changePaymentstatus_btn" type="button" data-id="<?php echo $receiver['order_id']; ?>">收款確認</button>
+																	<?php endif ?>
+																<?php endif ?>
+															</div>
+														</div>
+														<?php if (!empty($receiver['p_msg'])): ?>
+															<div class="info">
+																<div class="title">備註</div>
+																<div class="content"><?php echo $receiver['p_msg']; ?></div>
+															</div>
+														<?php endif ?>
+													</div>
+													<div class="receiver_action"><button type="submit">已通知</button></div>
+												</div>
+											</form>
 										</article>
 									<?php endforeach ?>
 								</div>
@@ -188,150 +304,6 @@ function typeTittle($type){
 			</div>
 		</div>
 	</div>
-
-	<?php foreach ($data as $key => $type): ?>
-		<section id="<?php echo $key; ?>">
-			<?php switch ($key) {
-				case 'order':
-					echo "<h1>訂單成立</h1>";
-					break;
-
-				case 'pack':
-					echo "<h1>裝貨中</h1>";
-					break;
-
-				case 'ship':
-					echo "<h1>運送中</h1>";
-					break;
-
-				case 'arrive':
-					echo "<h1>已完成</h1>";
-					break;
-				
-				default:
-					break;
-			} ?>
-			
-			<div class="order_list">
-				<div class="title">
-					<div>訂購人</div>
-					<div>收件人</div>
-					<div>箱數</div>
-					<div>金額</div>
-					<div>付款方式</div>
-					<div>備註</div>
-					<?php if ($key != "arrive"): ?>
-						<div>已通知</div>
-						<div><i class="icon-checkbox check_all"></i></div>
-					<?php endif ?>
-				</div>
-				<?php if (!empty($type)): ?>
-					<?php foreach ($type as $order): ?>
-						<div class="persons">
-							<div class="publick_inf">
-								<!-- 訂購人 -->
-								<div>
-									<?php echo $order['a_name']; ?><br>
-									<a href="/search.php?order=<?php echo $order['a_phone']; ?>" target="_blank"><?php echo $order['a_phone']; ?></a><br>
-								</div>
-							</div>
-
-							<div class="person_inf">
-								<?php foreach ($order["orders"] as $i => $person): ?>
-									<!-- 收件人 -->
-									<div>
-										<?php echo $person['p_name']; ?> <?php echo $person['p_phone']; ?><br>
-										<?php echo $person['p_address']; ?>
-									</div>
-									<!-- 箱數 -->
-									<div class="p_num"><?php echo $person["p_num"]; ?></div>
-									<!-- 金額 -->
-									<div><?php echo number_format($person["p_num"] * 1000); ?></div>
-									<!-- 付款方式 -->
-									<div>
-										<?php if ($person["payment_type"] == "cod"): ?>
-											貨到付款
-										<?php elseif($person["payment_type"] == "atm"): ?>
-											<?php switch ($person["payment_status"]) {
-												case '0':
-													echo "匯款";
-													break;
-												case '1':
-													echo "匯款-等待審核<br>";
-													echo $person["atm_bank"]." | ".$person["atm_num"]."<br>";
-													echo "<button type='button' onclick='changepayment(".'"'.$person['order_id'].'"'.")'>匯款確認</button>";
-													break;
-												case '2':
-													echo "匯款-已確認<br>";
-													echo $person["atm_bank"]." | ".$person["atm_num"];
-													break;
-												
-												default:
-													break;
-											} ?>
-										<?php else: ?>
-											<?php switch ($person["payment_status"]) {
-												case '0':
-													echo "現金付款";
-													break;
-												case '1':
-													echo "現金付款-等待審核<br>";
-													echo $person["cash_who"]."<br>";
-													echo "<button type='button' onclick='changepayment(".'"'.$person['order_id'].'"'.")'>收款確認</button>";
-													break;
-												case '2':
-													echo "現金付款-已收款<br>";
-													echo $person["cash_who"];
-													break;
-												
-												default:
-													break;
-											} ?>
-										<?php endif ?>
-									</div>
-									<!-- 備註 -->
-									<div><?php echo $person["p_msg"]; ?></div>
-									<!-- action -->
-									<div>
-										<?php if ($key == 'order'): ?>
-											<button type="button" onclick="changestatus('<?php echo $person["order_id"] ?>', 'pack')">已通知</button>
-										<?php elseif($key == 'pack'): ?>
-											<button type="button" onclick="changestatus('<?php echo $person["order_id"] ?>', 'ship')">已出貨</button>
-										<?php elseif($key == 'ship'): ?>
-											<button type="button" onclick="changestatus('<?php echo $person["order_id"] ?>', 'arrive')">已到貨</button>
-										<?php endif ?>
-									</div>
-									<!-- 全選 -->
-									<div>
-										<?php if ($key != 'arrive'): ?>
-											<input type="checkbox" name="order_id[]" value="<?php echo $person["order_id"]; ?>" id="id<?php echo $person["order_id"]; ?>">
-											<label for="id<?php echo $person["order_id"]; ?>">
-												<i class="icon-checkbox"></i><i class="icon-check"></i>
-											</label>
-										<?php endif ?>
-									</div>
-								<?php endforeach ?>
-							</div>
-						</div>
-					<?php endforeach ?>
-				<?php endif ?>
-				<div class="total">
-					<?php if ($key == 'order'): ?>
-						訂單成立 <span><?php echo $total[$key]; ?></span> 箱 <label>箱，目前已選取 <span class="check_num">0</span> 箱</label>
-						<button type="button" onclick="change_allorderstatus(this, 'pack');">已通知</button>
-					<?php elseif($key == 'pack'): ?>
-						裝貨中 <span><?php echo $total[$key]; ?></span> 箱 <label>箱，目前已選取 <span class="check_num">0</span> 箱</label>
-						<button type="button" onclick="change_allorderstatus(this, 'ship');">已出貨</button>
-					<?php elseif($key == 'ship'): ?>
-						運送中 <span><?php echo $total[$key]; ?></span> 箱 <label>箱，目前已選取 <span class="check_num">0</span> 箱</label>
-						<button type="button" onclick="change_allorderstatus(this, 'arrive');">已到貨</button>
-					<?php else: ?>
-						已成功售出 <span><?php echo $total[$key]; ?></span> 箱
-					<?php endif ?>
-				</div>
-			</div>
-		</section>
-	<?php endforeach ?>	
 </main>
 
 <!-- <nav>
@@ -347,6 +319,21 @@ function typeTittle($type){
 
 <script type="text/javascript">
 $(function(){
+	// change payment status
+	$(document).on("click", ".changePaymentstatus_btn", function(){
+		$.ajax({
+			url: '/change_paymentstatus.php',
+			type: 'post',
+			data: {
+				'order_num': $(this).data('id'),
+			},
+			success: function(msg){
+				if (msg == 'success') {
+					location.reload();
+				}
+			}
+		})
+	});
 	$("input[name='order_id[]']").on('change', function(){
 		var parent = $(this).parents("section");
 		var total = 0;
@@ -374,6 +361,8 @@ $(function(){
 		});
 		parent.find(".check_num").text(total);
 	})
+
+
 });
 
 // 變更訂單狀態
