@@ -13,7 +13,7 @@ if ($_SERVER['SERVER_NAME'] == 'pomelo.esy.es') {
 
 	$seldb = @mysql_selectdb("u797195823_pomel");
 
-}elseif($_SERVER['SERVER_NAME'] == 'ec2-13-124-229-140.ap-northeast-2.compute.amazonaws.com'){
+}elseif($_SERVER['SERVER_NAME'] == 'ec2-13-124-229-140.ap-northeast-2.compute.amazonaws.com' || $_SERVER['SERVER_NAME'] == 'oufamilypomelo.parkerro.tw'){
 	$db_host = "127.0.0.1";
 	$db_username = "root";
 	$db_password = "zo6gp65j";
