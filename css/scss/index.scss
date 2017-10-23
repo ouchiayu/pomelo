@@ -60,7 +60,7 @@
 			color: white;
 			cursor: pointer;
 			box-shadow: 0 2px 4px 0 rgba(black, 0.1);
-			@include font-size(12px);
+			@include font-size(16px);
 			@include transition(0.3s, all, linear, 0s);
 			&:hover{
 				padding-top: 1em;
@@ -369,7 +369,7 @@ main{
 		.max-width{
 			.search-btn{
 				margin-right: 10%;
-				@include font-size(14px);
+				@include font-size(20px);
 			}
 		}
 	}
