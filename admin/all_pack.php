@@ -1,5 +1,5 @@
 <?php 
-include("connMysql.php");
+include("../connMysql.php");
 
 if (!$seldb) die("資料庫選擇失敗");
 
@@ -11,7 +11,7 @@ if (is_array($_POST["id"])) {
 
 foreach ($id_array as $id) {
 	$sql_query  = "UPDATE `pomelo_order` SET ";
-	$sql_query .= "`order_status` = 'pack'";
+	$sql_query .= "`order_status` = 'pack', `pack_time` = '".date("Y-m-d H:i:s")."'";
 
 	mysql_query($sql_query);
 }
