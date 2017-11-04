@@ -38,4 +38,6 @@ if ($_SERVER['SERVER_NAME'] == 'pomelo.esy.es') {
 
 	$seldb = @mysql_selectdb("pomelo");
 }
+
+date_default_timezone_set("Asia/Taipei");
  ?>
