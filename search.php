@@ -223,13 +223,6 @@ unset($order[count($order)-1]);
 									$status['arrive'] = 'active';
 									break;
 								
-								case 'arrive':
-									$status['order'] = 'ready';
-									$status['pack'] = 'ready';
-									$status['ship'] = 'ready';
-									$status['arrive'] = 'active';
-									break;
-
 								default:
 									break;
 							}
@@ -279,7 +272,7 @@ unset($order[count($order)-1]);
 									</div>
 								<?php endif ?>
 
-								<?php if ($status['arrive'] == 'active' && empty($receiver['arrive_time'])): ?>
+								<?php if ($receiver['order_status'] == 'ship' && empty($receiver['arrive_time'])): ?>
 									<div class="part_action">
 										<form id="order_form" action="add_arrive.php?order=<?php echo $receiver['order_id']; ?>" method="post" accept-charset="utf-8">
 											<button type="submit" class="btn btn-main">我已收到</button>
