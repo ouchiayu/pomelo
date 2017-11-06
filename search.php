@@ -264,7 +264,7 @@ unset($order[count($order)-1]);
 									<div class="part_action">
 										<div class="date"><?php echo $receiver['ship_time']; ?></div>
 										<?php if ($receiver['ship_num']): ?>
-											<a href="https://www.hct.com.tw/Default.aspx" target="_blank"><?php echo $receiver['ship_num']; ?></a>
+											<a href="https://www.hct.com.tw/Search/SearchGoods_ODR.aspx?v=search" target="_blank"><?php echo $receiver['ship_num']; ?></a>
 										<?php endif ?>
 									</div>
 								<?php endif ?>
