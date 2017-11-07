@@ -11,7 +11,8 @@ if (is_array($_POST["id"])) {
 
 foreach ($id_array as $id) {
 	$sql_query  = "UPDATE `pomelo_order` SET ";
-	$sql_query .= "`order_status` = 'ship', `ship_time` = '".date("Y-m-d H:i:s")."'";
+	$sql_query .= "`order_status` = 'ship', `ship_time` = '".date("Y-m-d H:i:s")."' ";
+	$sql_query .= "WHERE `order_status` = 'pack';";
 
 	mysql_query($sql_query);
 }
